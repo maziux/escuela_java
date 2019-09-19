@@ -1,10 +1,15 @@
-package ejemplojava;
+package poo;
 /**@author Miguel Maseda
  */
 public class CocheRally extends Coche {
     
     private float rozamiento;
-    
+ 
+    public CocheRally(String marca) {
+        super(marca);
+        this.rozamiento = 3.1416f;
+    }    
+
     public CocheRally(String marca, TipoCarburante carburante, TipoColor color, float roz) {
         super(marca,carburante,color);
         this.rozamiento = roz;
@@ -33,7 +38,7 @@ public class CocheRally extends Coche {
         System.out.println("Acelerando a lo rally!");
         if (this.isArrancado()) {
             super.acelerar();
-            setNivelDeposito(getNivDeposito() - .5);
+            modificarNivDeposito(-0.5);
             explosionCilindro();
         }
     }

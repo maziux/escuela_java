@@ -1,34 +1,52 @@
-package ejemplojava;
+package poo;
 
-public class Coche { // hereda de Object
-    
+public class Coche extends Vehiculo implements Rodable{ // hereda de Object
 
-   
-    public static final int CAPACIDAD_DEPOSITO = 60;
     
-    private final byte numRuedas;   // Valor constante por el final
-    private final String marca;
+    //public static final int CAPACIDAD_DEPOSITO = 60; de vehiculo
+    
+    //private double nivDeposito; de vehiculo
+    //private final String marca; de vehiculo
     private final TipoCarburante carburante;
-    private double nivDeposito;
-    private boolean arrancado;
-    private TipoColor color = TipoColor.ROJO;
+    //private boolean arrancado; de vehiculo
+    private TipoColor color = TipoColor.ROJO;    
+    private final byte numRuedas;   // Valor constante por el final
 
-    public Coche(String marca, TipoCarburante carburante, TipoColor color) {
+    public Coche(String marca, String matricula) {
+        super(matricula,marca);
         this.numRuedas = 4;
-        this.marca = marca;
+        //this.marca = marca;
+        this.color = TipoColor.BLANCO;
+        this.carburante = TipoCarburante.ELECTRICO;
+    }
+
+    public Coche(String marca) {
+        super("matrícula prueba",marca);
+        this.numRuedas = 4;
+        //this.marca = marca;
+        this.color = TipoColor.BLANCO;
+        this.carburante = TipoCarburante.ELECTRICO;
+    }
+    
+    public Coche(String marca, TipoCarburante carburante, TipoColor color) {
+        super("matricula prueba", marca);
+        this.numRuedas = 4;
+        //this.marca = marca;
         this.color = color;
         this.carburante = carburante;
     }
 
     public Coche(String marca, TipoCarburante carburante, String color) {
+        super("matricula prueba", marca);
         this.numRuedas = 4;
-        this.marca = marca;
+        //this.marca = marca;
         //this.color = getStringColor(color.toUpperCase());
         //this.color = Enum.valueOf(Enums, color.toUpperCase());
         this.color = TipoColor.valueOf(color.toUpperCase());
         this.carburante = carburante;
     }
 
+    
     /*
     private TipoColor getStringColor(String c){
         TipoColor resultado;
@@ -58,56 +76,31 @@ public class Coche { // hereda de Object
         return resultado;
     }*/
     
-    public double getNivelDep() {
-        return nivDeposito;
-    }
-
+    @Override
     public byte getNumRuedas() {
         return numRuedas;
     }
     
-    public void echarCarburante(double cantidad) {
-        if (cantidad > 0)
-            this.nivDeposito += cantidad;
-        
-        if (nivDeposito > CAPACIDAD_DEPOSITO)
-            nivDeposito = CAPACIDAD_DEPOSITO;
-    }
-    
+    @Override
     public void acelerar() {
-        if (arrancado) {
-            nivDeposito -= 0.1;
+        if (isArrancado()) {
+            modificarNivDeposito(-0.1);
             explosionCilindro();
         }
     }
+
+    @Override
+    public void echarCarburante(double cantidad) {
+        if (cantidad > 0)
+            modificarNivDeposito(cantidad);
+        }   
     
-    public void vaciarDeposito() {
-        // float nivelDeposito = 2;
-        this.nivDeposito = 3;
-        System.out.println("Deposito vaciado de " + this.toString()
-                /*+ "\n   Nivel: " + nivelDeposito*/ );  
-    }
+    @Override
     public String toString() {
-        return "Coche " + marca + " color: " + this.color.toString() + " nivel " + nivDeposito;
+        return "Coche " + getMarca() + " Matricula: " + getMatricula() + " color: " + this.color.toString() + " nivel " + getNivDeposito();
     }
     public void mostrar() {
         System.out.println(this.toString()); 
-    }
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public boolean isArrancado() {
-        return arrancado;
-    }
-
-    public double getNivDeposito() {
-        return nivDeposito;
-    }
-
-    public void setArrancado(boolean arrancado) {
-        this.arrancado = arrancado;
     }
 
     public void setColor(TipoColor color) {
@@ -125,8 +118,15 @@ public class Coche { // hereda de Object
     protected void explosionCilindro() {
         System.out.println("Motor funcionando.");
     }
+
+    @Override
+    public void abrirPuerta() {
+        System.out.println("Abriendo puertas del coche.");
+    }
+
+    @Override
+    public void moverse() {
     
-    protected void setNivelDeposito(double nuevoNiv){
-        this.nivDeposito = nuevoNiv;
+        System.out.println("AVANTI TUTO! " + toString());
     }
 }
