@@ -1,77 +1,132 @@
 package ejemplojava;
 
-/**@author alumno
- */
-public class Coche {
+public class Coche { // hereda de Object
     
-    private final byte numRuedas; // 'final' indica valor constante
-    private String marca;
-    private int capacidadDeposito;
-    private boolean esGasolina;
-    private double nivelDeposito;
-    boolean arrancado;
 
-    public Coche(String marca, int capacidadDeposito, boolean esGasolina){
+   
+    public static final int CAPACIDAD_DEPOSITO = 60;
+    
+    private final byte numRuedas;   // Valor constante por el final
+    private final String marca;
+    private final TipoCarburante carburante;
+    private double nivDeposito;
+    private boolean arrancado;
+    private TipoColor color = TipoColor.ROJO;
+
+    public Coche(String marca, TipoCarburante carburante, TipoColor color) {
         this.numRuedas = 4;
         this.marca = marca;
-        this.capacidadDeposito = capacidadDeposito;
-        this.esGasolina = esGasolina;
+        this.color = color;
+        this.carburante = carburante;
     }
 
-    public int getCapacidadDeposito() {
-        return capacidadDeposito;
+    public Coche(String marca, TipoCarburante carburante, String color) {
+        this.numRuedas = 4;
+        this.marca = marca;
+        //this.color = getStringColor(color.toUpperCase());
+        //this.color = Enum.valueOf(Enums, color.toUpperCase());
+        this.color = TipoColor.valueOf(color.toUpperCase());
+        this.carburante = carburante;
     }
 
-    public boolean isEsGasolina() {
-        return esGasolina;
+    /*
+    private TipoColor getStringColor(String c){
+        TipoColor resultado;
+        switch(c.toUpperCase()) {
+            case "BLANCO":
+                resultado = TipoColor.BLANCO;
+                break;
+            case "NEGRO":
+                resultado = TipoColor.NEGRO;
+                break;
+            case "ROJO":
+                resultado = TipoColor.ROJO;
+                break;
+            case "VERDE":
+                resultado = TipoColor.VERDE;
+                break;
+            case "AZUL":
+                resultado = TipoColor.AZUL;
+                break;
+            case "PLATEADO":
+                resultado = TipoColor.PLATEADO;
+                break;
+            default:
+                resultado = TipoColor.BLANCO;
+                break;
+        }
+        return resultado;
+    }*/
+    
+    public double getNivelDep() {
+        return nivDeposito;
     }
 
-    public double getNivelDeposito() {
-        return nivelDeposito;
+    public byte getNumRuedas() {
+        return numRuedas;
     }
-   
+    
+    public void echarCarburante(double cantidad) {
+        if (cantidad > 0)
+            this.nivDeposito += cantidad;
+        
+        if (nivDeposito > CAPACIDAD_DEPOSITO)
+            nivDeposito = CAPACIDAD_DEPOSITO;
+    }
+    
+    public void acelerar() {
+        if (arrancado) {
+            nivDeposito -= 0.1;
+            explosionCilindro();
+        }
+    }
+    
+    public void vaciarDeposito() {
+        // float nivelDeposito = 2;
+        this.nivDeposito = 3;
+        System.out.println("Deposito vaciado de " + this.toString()
+                /*+ "\n   Nivel: " + nivelDeposito*/ );  
+    }
+    public String toString() {
+        return "Coche " + marca + " color: " + this.color.toString() + " nivel " + nivDeposito;
+    }
+    public void mostrar() {
+        System.out.println(this.toString()); 
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
     public boolean isArrancado() {
         return arrancado;
+    }
+
+    public double getNivDeposito() {
+        return nivDeposito;
     }
 
     public void setArrancado(boolean arrancado) {
         this.arrancado = arrancado;
     }
-    
-    public byte getNumRuedas() {
-        return numRuedas;
-    }
-        
-    public double getNivelDep(){
-        return nivelDeposito;
-    }
-    
-    public void echarCarburante(double cantidad){
-        if(cantidad > 0)
-            this.nivelDeposito += cantidad;
-        if (nivelDeposito > capacidadDeposito)
-            nivelDeposito = capacidadDeposito;
-    }
-    
-    public void acelerar(){
-        if(arrancado) nivelDeposito -= 0.1;
-    }
-    
-    public void vaciarDeposito() {
-        this.nivelDeposito = 3;
-        System.out.println("Deposito vaciado de " + this.toString()
-            /*+ "\n   Nivel: " + this.nivelDeposito*/);
+
+    public void setColor(TipoColor color) {
+        this.color = color;
     }
 
-    public String toString(){
-        return "Coche " + marca + " nivel " + nivelDeposito;
-    }
-    
-    public void mostrar(){
-        System.out.println(this.toString());
+    public TipoColor getColor() {
+        return color;
     }
 
-    public String getMarca() {
-        return marca;
+    public TipoCarburante getCarburante() {
+        return carburante;
+    }
+    
+    protected void explosionCilindro() {
+        System.out.println("Motor funcionando.");
+    }
+    
+    protected void setNivelDeposito(double nuevoNiv){
+        this.nivDeposito = nuevoNiv;
     }
 }
