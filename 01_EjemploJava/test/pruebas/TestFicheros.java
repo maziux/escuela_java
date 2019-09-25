@@ -7,8 +7,10 @@ package pruebas;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-import stringAuxVarios.StringAux_v1;
+import threads.FactoriaHiloFich;
 import threads.HiloFichero;
+import threads.HiloFicheroStrAuxV1;
+import threads.HiloFicheroStrAuxV2;
 
 /**
  *
@@ -16,21 +18,17 @@ import threads.HiloFichero;
  */
 public class TestFicheros {
     
+    
     public TestFicheros() {
     }
 
-    /*  
-    //@Test
-    public void generacionFicheroAleatorio() {
-        HiloFichero.crearFicheroEjem("C:\\Users\\alumno\\Desktop\\ESCUELA_JAVA\\escuela_java.git\\01_EjemploJava\\texto_esp.txt");
-    }*/
+    // TODO add test methods here.
+    // The methods must be annotated with annotation @Test. For example:
+    //
     @Test
-    public void leerFicheroAleatorio() {
-        StringAux_v1 str1 = new StringAux_v1();
-        String ruta = "C:\\Users\\alumno\\Desktop\\ESCUELA_JAVA\\escuela_java.git\\01_EjemploJava\\texto_esp.txt";
-        HiloFichero test = new HiloFichero(ruta,str1);
-        
-        test.leerFicheroEjem(ruta);
+    public void generacionFicheroAleatorio() {
+//        HiloFichero.crearFicheroEjem("C:\\Users\\alumno\\Desktop\\ESCUELA_JAVA\\escuela_java.git\\01_EjemploJava\\texto_esp.txt");
+        HiloFichero hf = FactoriaHiloFich.HiloFichero1();
+        hf.leerFicheroEjem("C:\\Users\\alumno\\Desktop\\ESCUELA_JAVA\\escuela_java.git\\01_EjemploJava\\texto_esp.txt");
     }
-
 }

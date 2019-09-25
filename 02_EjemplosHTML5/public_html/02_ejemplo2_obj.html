@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html>
     <head>
-        <title>Ejemplo Obj</title>
+        <title>Ejemplos Obj</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>Ejemplo Obj</div>
-        
+        <div>Ejemplos Obj</div>
         <script>
             var valor1 = new Object();
             var valor2 = {
-                "dni": "987654-J",
-                "nombre": "Menganito",
+                "dni": "9876554-J",
+                'nombre': "Menganito",
                 nacimiento: new Date()
             }; // Nomenclatura JSON
             
@@ -22,37 +25,17 @@
             persona.nombre = "Fulanito";
             persona.edad = 42;
             persona.nacimiento = new Date();
-            /*alert("Info persona: " + persona.nombre
-                    + "\n DNI: " + persona.dni
-                    + "\n Edad: " + persona.edad
-                    + "\n Nacimiento: " + persona.nacimiento);*/
-            /*alert("Info persona: " + valor2.nombre
-                    + "\n DNI: " + valor2.dni
+           /* window.alert("Info persona 2: " + valor2.nombre
                     + "\n Edad: " + valor2.edad
-                    + "\n Nacimiento: " + valor2.nacimiento);*/
-            persona["apellidos"] = "De tal y tal";
-            /*alert("Info persona: " + persona.nombre
-                    + "\n Apellidos: " + persona.apellidos
-                    + "\n DNI: " + persona.dni
+                    + "\n Nacim: " + valor2["nacimiento"]);*/
+            
+            persona["apellidos"] = "De Tal y Tal";
+            
+            window.alert("Info persona: " + persona.nombre
+                    + "\n Apellidos " + persona.apellidos
                     + "\n Edad: " + persona.edad
-                    + "\n Nacimiento: " + persona.nacimiento);*/
-            
-            var coche = new Object();
-            coche.matricula = "555-jjj";
-            coche.marca = "Ford";
-            coche.numRuedas = 2;
-            coche.color = "Rojo";
-            coche.carburante = "GASOLINA";
-            
-            console.log("Datos coche"
-                    + "\n Matrícula:  " + coche.matricula
-                    + "\n Marca:      " + coche.marca
-                    + "\n Ruedas:     " + coche.numRuedas
-                    + "\n Color:      " + coche.color
-                    + "\n Carburante: " + coche.carburante);
-            
-            
-            
+                    + "\n Nacim: " + persona.nacimiento
+                    );
             
         </script>
     </body>

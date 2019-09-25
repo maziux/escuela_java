@@ -10,5 +10,10 @@ package poo;
  * @author alumno
  */
 public enum TipoColor {
-    BLANCO, NEGRO, ROJO, VERDE, AZUL, PLATEADO
+    BLANCO, 
+    NEGRO,
+    ROJO, 
+    VERDE, 
+    AZUL, 
+    PLATEADO
 }

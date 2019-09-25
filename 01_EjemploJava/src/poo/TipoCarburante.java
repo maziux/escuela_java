@@ -10,5 +10,5 @@ package poo;
  * @author alumno
  */
 public enum TipoCarburante {
-    GASOLINA, DIESEL, ELECTRICO
+        GASOLINA, DIESEL, ELECTRICO
 }

@@ -12,36 +12,34 @@ and open the template in the editor.
     </head>
     <body>
         <div>POO con JS</div>
-        
         <script>
-            
-            // Estilo EcmaScript 5 
-            var Coche = function(matricula, marca) {
+            // Estilo EscmaScript 5
+            var Coche = function(matricula, marca ) {
                 this.matricula = matricula;
                 this.marca = marca;
+                variableGlobal = "EXISTE " + marca;
             };
-            Coche.prototype.arrancar = function (){
-                document.write("<p>Arranca " + this.marca + "</p>");
-                if (true) {
-                    var local = "LOCAL";
+            Coche.prototype.arrancar = function () {
+                document.write("<P>Arranca " + this.marca + "</p>");
+                if (true) { 
+                    var local = "Local"; 
                 }
-                document.write("<p>Existe aun " + local + "</p>");
-            };
-            var miCoche = new Coche("1234-fff","Kia");
-            document.write("<p>" + miCoche.marca + "</p>");
+                document.write("<P>Existe aun " + local + "</p>");
+            };            
+            var miCoche = new Coche("1234-FFF" , "Kia");
+            document.write("<P>" + miCoche.marca + "</p>");
             miCoche.arrancar();
-            var tuCoche = new Coche("4567-EEE","Porche");
+            var tuCoche = new Coche("4567-QQQ" , "Porche");
             tuCoche.arrancar();
-            
+            alert(variableGlobal);
             var miCocheDeFinDeSemana = {
-                matricula: "9999-YYY",
-                marca: "Limusina",
-                autoconduccion: function(){
-                    document.write("<p>Dime donde voy</p>");
-                }
-            }
+                   matricula: "9999-YYY",
+                   marca: "Limusina",
+                   autoconduccion: function() {
+                       document.write("<P>Dime donde voy</p>");
+                   }
+            };
             miCocheDeFinDeSemana.autoconduccion();
-            
         </script>
     </body>
 </html>

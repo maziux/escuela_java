@@ -6,28 +6,31 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Funciones callback</title>
+        <title>Funciones Call Back</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>Funciones callback</div>
-        <div id="mensajes"></div>
+        <div>Funciones Call Back</div>
+        <div id = "mensajes"></div>
         <script>
-            let mensajes = document.getElementById('mensajes');
-            function funNormal(param, funCllBk) {
-                mensajes.innerHTML += `Fun normal ${param} invocada<br/>`;
-                funCllBk(param);
-            }
-            function funCallback_A(conQue){
-                mensajes.innerHTML += `Fun callback A invocada con ${conQue}<br/>`;
-            }
-            function funCallback_B(conQue){
-                mensajes.innerHTML += `Fun callback BBB! invocada con ${conQue}<br/>`;
-            }
-            funNormal("Aaaa", funCallback_B);
-            funNormal("Bbbb", funCallback_A);
-            
+let mensajes = document.getElementById("mensajes");
+
+function funNormal(param, funCllBk) {
+    mensajes.innerHTML += `Fun normal ${param} invocada<br/>`;
+    funCllBk(param);
+}
+function funCallback_A(conQue) {
+    mensajes.innerHTML += `Fun Callback AAA invocada con ${conQue}<br/>`;
+}
+function funCallback_B(conQue) {
+    mensajes.innerHTML += `Fun Callback BBB invocada con ${conQue}<br/>`;
+}
+funNormal("Aaaa", funCallback_A);
+funNormal("Bbbbbb", funCallback_B);
+mensajes.onclick = function() {
+    funNormal("CCCCC", funCallback_B);
+}
         </script>
     </body>
 </html>

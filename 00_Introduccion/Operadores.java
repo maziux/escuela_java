@@ -1,20 +1,26 @@
 class Operadores {
-	public static void main(String[] args){
-		
-		if ("aa".equals(args[0])) {
+	public static void main(String[] argumentos) 
+	{
+		System.out.println("Has puesto " + argumentos[0]);
+		System.out.println( 5 != 5  ?  "Pues si"  : "Pues no");
+
+		if ("aa".equals(argumentos[0]))
 			System.out.println("Quieres dos AA");
-		} else {
+		else
 			System.out.println("Quieres otra cosa");
-		}
 		
-		// Operador ternario
-		System.out.println( 5 != 5 ? "Pues si" : "Pues no");
+		System.out.println("Quieres dos " 
+			+ ("aa".equals(argumentos[0]) ? "AA" : "otra cosa"));
+		int i = 1, j = 2;
+		String resultado = 
+			(34 / 43) > 1 ? "--" 
+			: (i == j) ? "i = j" 
+			: (i == j+1) ? "i = j"
+			: "por defecto" ;
 		
-		System.out.println( "aa".equals(args[0]) ? "Quieres dos AA" : "Quieres otra cosa" );
-		
-		// Operadores bit a bit: & | ^
 		byte result = 113 & 199;
-		System.out.println("AND binario: " + result);
+		System.out.println("AND binario = " + result);
+		
 		
 	}
 }

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
     <head>
         <title>TODO supply a title</title>
@@ -8,25 +7,35 @@
     </head>
     <body>
         <div>TODO write content</div>
-        
         <script>
             var varNumerica = 7.6667;
             var varTexto = "Un texto";
             console.log("Hola: " + varNumerica + " " + varTexto);
             console.log(typeof varNumerica);
-            var numero = parseFloat("adfa");
-            console.log("Numero: " + numero);
+            var numero = parseFloat("GG 3.1416");
+            console.log("numero = " + numero); // NaN es numérico
             var nulo = null;
-            console.log(nulo);
-            console.log(typeof variablequenoexiste);
-            if (true) console.log("Es cierto");
-            var texto = "";
+            console.log(nulo); // NaN es numérico
+            console.log(typeof variableQueNoExiste); // NaN es numérico
+            if (true)
+                console.log("Es \"cierto\"");
+            var texto = ' "entre" ';
             for (var i = 0; i < 10; i++) {
-                texto += "Texto " + i + "\n";
+                texto += 'Texto ' + i + "\n";
             }
             console.log(texto);
+            
             texto = 100;
             console.log(texto * 2);
+            
+            if (200 == "200") {
+                console.log("Son iguales");
+            }
+            if (200 === "200") {
+                console.log("Son identicos");
+            } else {
+                console.log("NIO son identicos");
+            }
         </script>
     </body>
 </html>

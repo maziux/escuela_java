@@ -1,35 +1,44 @@
-class HolaMundo{
-	public static void main(String[] args){
-		
-		System.out.println("Hola Mundo!");
-		String nombre = "Miguel";
+/** 
+ * Clase de introduccion
+ * @author German C R
+ */
+class HolaMundo {
+	/** 
+	 * Metodo de inicio de programa
+	 */
+	public static void main(String[] args) {
+		System.out.println("Hola mundo!");
+		String nombre = "German";		
 		System.out.println("Hola " + nombre + "!");
-		
-		byte unByte = -128; // hasta 127 - 1 byte
+		byte unByte = -128;	// hasta 127
 		System.out.println("Byte: " + unByte);
+		// Comentario hasta final de linea
+		/* Comentario varias 
+		lineas */
+		int numero = 1234567890;
+		System.out.println("Entero: " + numero);
+		float decimalFloat = 123456789012345f;
+		System.out.println("float: " + decimalFloat);
+		double decimalDoble = 1.234567890123456789;
+		System.out.println("double: " + decimalDoble);
 		
-		int entero = 1000; // 4 bytes
-		System.out.println("Entero: " + entero);
-		
-		float decimalFloat = 1.234567890123456789f; // 4 bytes - 8 bits exp, 24 bits mantisa
-		System.out.println("Decimal: " + decimalFloat);
-		
-		double decimalDoble = 0.123456789012345678901; // 8 bytes - 12 bits exp, 52 bits mantisa
-		System.out.println("Doble: " + decimalDoble);
-		
-		long entLargo = 1234567890123456789L;
+		//{
+			long entLargo = 1234567890123456789L;	// Trillones
+		//}
 		System.out.println("entLargo: " + entLargo);
-		
-		char caracter = 65; //'z'
+
+		char caracter = 110; // 'z'
 		System.out.println("caracter: " + caracter);
-		
-		{
-			char[] texto = {'a','b','c'};
-			System.out.println("texto: " + texto[1]);
-			
-			for(int i = 0; i < texto.length; i = i + 1)
+		{	// Bloque instruccion
+			char[] texto = {'a', 'b', 'c'};
+			for (int i = 0; i < texto.length; i = i + 1)
 				System.out.println("caracter: " + texto[i]);
 		}
-		
 	}
 }
+
+
+
+
+
+

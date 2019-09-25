@@ -1,67 +1,61 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package poo;
 
-/**@author Miguel Maseda
+/**
+ *
+ * @author alumno
  */
 public abstract class Vehiculo {
-
-    private static final int CAPACIDAD_DEPOSITO = 60;
-    private final String matricula;
-    private final String marca;
-    private double nivDeposito;
-    private boolean arrancado;
     
-    public Vehiculo(String matricula, String marca) {
+    protected String matricula;
+    private final String marca;
+    private TipoColor color = TipoColor.ROJO;
+  
+   /* public Vehiculo() { 
+        this.matricula = "SIN MATRICULAR";
+    }*/
+    public Vehiculo(String marca, String matricula) { 
         this.matricula = matricula;
         this.marca = marca;
+        this.color = TipoColor.BLANCO;
     }
-    
-    public abstract void echarCarburante(double cantidad);
-    
-    public abstract void acelerar();
-    
-    public abstract void abrirPuerta(); 
-    
+    public Vehiculo(String marca, String matricula, TipoColor color) { 
+        this.matricula = matricula;
+        this.marca = marca;
+        this.color = color;
+    }
+    public Vehiculo(String marca, String matricula, String color) { 
+        this.matricula = matricula;
+        this.marca = marca;
+        this.color = TipoColor.valueOf(color.toUpperCase());
+    }    
     @Override
-    public abstract String toString();
+    public String toString() {
+        return "Vehiculo "+ this.getClass().toString()
+                + ": "+ getMatricula() + ", " + getMarca() 
+                + " color " + this.getColor().toString() ;
+    }
+    public abstract void abrirPuerta();
+    public abstract void acelerar();
     
     public String getMatricula() {
         return matricula;
     }
-
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }   
     public String getMarca() {
         return marca;
-    }
-
-    public static int getCAPACIDAD_DEPOSITO() {
-        return CAPACIDAD_DEPOSITO;
-    }
-
-    public double getNivDeposito() {
-        return nivDeposito;
-    }
-    
-    public void modificarNivDeposito(double gastado){
-        nivDeposito = getNivDeposito() + gastado;
-        if (nivDeposito < 0)
-            System.out.println("Te has quedado sin Gasolina!");
-        if (nivDeposito > CAPACIDAD_DEPOSITO) {
-            System.out.println("Deposito lleno!");
-            nivDeposito = CAPACIDAD_DEPOSITO;
-        }            
-    }
-
-    public boolean isArrancado() {
-        return arrancado;
     }    
-
-    public void setArrancado(boolean arrancado) {
-        this.arrancado = arrancado;
-    }    
-
-    public void vaciarDeposito() {
-        // float nivelDeposito = 2;
-        this.nivDeposito = 3;
-        System.out.println("Deposito vaciado de " + this.toString()
-                /*+ "\n   Nivel: " + nivelDeposito*/ );
+    public TipoColor getColor() {
+        return color;
+    }
+    public void setColor(TipoColor color) {
+        this.color = color;
     }
 }
+// VEHICULO DECLARA (NO IMPLEMENTA) ALGUNOS METODOS DE COCHE

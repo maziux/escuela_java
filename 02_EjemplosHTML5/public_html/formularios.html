@@ -11,17 +11,16 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        
         <form name="miform" id="miform" method="get" action="#">
             <h1>Formulario</h1>
-            <label>Introduce tu nombre:</label>
-            <br>
-            <input name="nombre" type="text" />
-            <input name="edad" type="number" min="1" max="200"/>
-            <input type="submit" value="HACER COMO QUE ENVIAMOS"/>
-                
-                
-                
+            <label>Introduce      tu nombre:</label>
+            <br/>
+            <input name="nombre" type="text" placeholder="Nombre?"/>
+            <input name="edad" type="number" min="1" max="199"  placeholder="Edad?"/>
+            <input name="email" type="email" />
+            <input name="password" type="password" />
+            <input name="cp" type="text" pattern="^[0-9]{4,5}$" />
+            <input type="submit" value="Hacer como que enviamos"/>
         </form>
     </body>
 </html>

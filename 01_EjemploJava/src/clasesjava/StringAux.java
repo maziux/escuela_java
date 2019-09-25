@@ -1,107 +1,103 @@
-package clasesjava;
-/**@author Miguel Maseda
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-public class StringAux{
+package clasesjava;
+
+/**
+ *
+ * @author alumno
+ */
+public class StringAux {
     
     private String string;
-    
-    public StringAux(String string){
+
+    public StringAux(String string) {
         this.string = string;
     }
-    
     public String getString() {
         return string;
-    }
-    
+    }   
     public void setString(String string) {
         this.string = string;
     }
-    
-    ///
     public String quitarEspSobrantes() {
         return quitarEspSobrantes(string);
-    }
-    ///
-    
-    public int contarPalabras(){
+    }    
+    public int contarPalabras() {
         return contarPalabras(string);
-    }
+    }    
     
     public static String quitarEspSobrantesV1(String texto) {
-        // Recorrer carácter a carácter quitando los sobrantes
+        // Recorrer caracter a caracter quitando los sobrantes
         String result = "";
-        texto = texto.trim() + " ";
-        for (int i = 0; i < texto.length() - 1; i++) {
+        texto = texto.trim();
+        for (int i = 0; i < texto.length(); i++) {
             if (texto.charAt(i) != ' ') {
                 result += texto.charAt(i);
-            } else {
-                if (texto.charAt(i+1) != ' ') {
+            } else if (i < texto.length() - 1){    // Si es ESP
+                if (texto.charAt(i + 1) != ' ') 
                     result += ' ';
-                }
             }
         }
         return result;
     }
-    
-    public static String quitarEspSobrantesV2(String texto) {
+    public static String  quitarEspSobrantesV2(String texto) {
         texto = texto.trim();
         String[] palabras = texto.split(" ");
         String result = "";
         for (String palabra : palabras) {
-            result += palabra.isEmpty() ? "" : palabra + " ";
+            if ( ! palabra.isEmpty())
+                result += palabra + " ";
         }
         return result.trim();
     }
     
-    public static String quitarEspSobrantesV3(String texto) {
+    public static String  quitarEspSobrantesV3(String texto) {
         texto = texto.trim();
-        while(texto.contains("  "))
+        
+        while (texto.contains("  ")) {
             texto = texto.replace("  ", " ");
+        }
         return texto;
     }
-    
     public static String quitarEspSobrantes(String texto) {
-        return texto.trim().replaceAll(" +", " ");
+        return texto.trim().replaceAll("\\s+", " ");
     }
-    
-    public static int contarPalabras(String texto) {
+    public static int contarPalabrasV1(String texto) {
         texto = texto.trim();
         if (texto.isEmpty())
             return 0;
         else
             return quitarEspSobrantes(texto).split(" ").length;
     }
-    
-    /*
-    public String quitarEspacios() {
-        
-        String[] textoAux = str.split(" ");
-        int totalWords = 0;
-        // contar palabras que no son espacio
-        for(int i = 0; i < textoAux.length; i++) {
-            //System.out.println("posAux:" + i + "contenido: " + textoAux[i]);
-            if(textoAux[i].compareTo("") != 0)
-                totalWords++;
-        }
-        
-        // crear string con tamaño total totalWords y añadir palabras
-        String[] textoAux2 = new String[totalWords];
-        int auxN = 0;
-        for(int i = 0; i < textoAux.length; i++) {
-            if(textoAux[i].compareTo("") != 0) {
-                textoAux2[auxN] = textoAux[i];
-                auxN++;
+    public static int contarPalabrasV2(String texto) {
+        int contador = 1;
+        texto = quitarEspSobrantes(texto);
+        texto = texto.trim();
+        if (texto.isEmpty()) {
+            return 0;
+        } else {
+            for (int i = 0; i < texto.length(); i++) {
+                if (texto.charAt(i) == ' ' ) 
+                    contador++;
             }
         }
+        return contador;
+    }
+    public static int contarPalabras(String texto) {
+        int contador = 1;
         
-        // mostrar resultado
-        String textoFinal = String.join(" ",textoAux2);
-        return textoFinal;
+        texto = texto.trim();
+        if (texto.isEmpty()) {
+            return 0;
+        } else {
+            for (int i = 0; i < texto.length() - 1; i++) {
+                if (texto.charAt(i) == ' ' && texto.charAt(i + 1) != ' ') 
+                    contador++;
+            }
+        }
+        return contador;
     }
-  
-    public int contarPalabras() {
-        String aux = this.quitarEspacios();
-        return aux.split(" ").length;
-    }
-    */
 }

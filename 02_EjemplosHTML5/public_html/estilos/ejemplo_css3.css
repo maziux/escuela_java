@@ -4,54 +4,46 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 20-sep-2019, 11:36:13
+    Created on : 20-sep-2019, 11:36:05
     Author     : alumno
 */
 
 * {
     margin: 0px;
     padding: 0px;
+    display: flex;
+    flex-direction: column;
 }
-
 body {
     background-color: greenyellow;
 }
-
 header {
     background-color: #66ff66;
     text-align: center;
     padding: 20px;
 }
-
-.letra-azul{
+.letra-azul {
     color: blue;
 }
-
 .mucho-margen {
     margin: 10px 20px 30px 40px;
 }
-
 nav, .fondo-naranja {
     background-color: orange;
 }
-
 #miparrafo {
     font-size: 20px;
     text-transform: uppercase;
 }
-
-/* descendientes */
-header nav {
+header nav { /* nav descendientes de header */
+}
+header > nav {/* nav hijos directos de header */
     font-style: italic;
 }
-
-/* hijo directo
-header > nav { 
-    font-style: italic;
+div > *:hover {
+    background-color: white;
 }
-*/
-
 img {
-    display: block;
+    /*display: block;*/
+    display: inline-block;
 }
-

@@ -13,41 +13,40 @@ and open the template in the editor.
     <body>
         <div>Funciones JS</div>
         <script>
-            
-            function miFuncion(arg1,arg2) {
+            function miFuncion(arg1, arg2) {
                 document.write("<p>Arg 1 " + arg1 + "</p>");
                 document.write("<p>Arg 2 " + arg2 + "</p>");
+                // variable llamada arguments
                 if (arguments.length > 2) {
-                    document.write("<h3>Tercer arg: " + arguments[2] + "</h3>");
+                    document.write("<h2>Tercer arg: " + arguments[2] + "</h2>");
                     if (arguments.length > 3) {
-                        for (arg in arguments) {
-                            document.write("<h2>IN Otro arg: " + arguments[arg] + "</h2>");
-                        }
-                        for (arg of arguments) {
-                            document.write("<h2>OF Otro arg: " + arg + "</h2>");
-                        }
+                        for (arg in arguments) 
+                            document.write("<h2>Con indice: " + arguments[arg] + "</h2>");
+                        for (arg of arguments) 
+                            document.write("<h2>Con foreach: " + arg + "</h2>");
                     }
                 }
             }
-            miFuncion("Argumento Texto", 2000);
+            /* miFuncion("Argumento texto", 2000);
             miFuncion(new Object(), false);
             miFuncion("Un solo argum");
-            miFuncion("Muchos", 100, null, "argumentos");
-            
-            
+            miFuncion("Muchos", 100, null, "argumento", "ooo", 555);
+            */
             var otraFuncion = function(veces) {
-                for (var i = 0; i < veces; i++){
-                    document.write("<p>Vez: " + i + "<p>");
-                }
+                for (var i = 0; i < veces; i++)
+                    document.write("<p>Vez: " + i + "</p>");
             };
-            otraFuncion.puesSi = "Es unn objeto";
+            otraFuncion.puesSi = "Es un objeto";
             otraFuncion(3);
-            document.write("<p>Vez: " + otraFuncion.puesSi + "<p>");
+            document.write("<p>Valor: " + otraFuncion.puesSi + "</p>");
+            var noTipica = new Function("x", "y", "var r=x+y; return r");
+            document.write("<p>2 + 2 =  " + noTipica(2, 2) + "</p>");
             
-            var noTipica = new Function("x","y","return x * y");
-            document.write("<p>2 * 2 = " + noTipica(2,2) + "<p>");
+            Function.prototype.toString = function() { return "Sustituido" };
+            Function.funcionEstatica = function() { return "funcionEstatica" };
             document.write(miFuncion.toString());
             
+            Function.funcionEstatica();
             
         </script>
     </body>

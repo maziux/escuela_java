@@ -11,24 +11,25 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div id="unDiv">DOM en JS</div>
+        <div id="unDiv">Document Object Model en Java Script</div>
         <input type="text" id="miCajaTexto" name="miCajaTexto"/>
-        <input type="button" id="elBoton" value="Pulsame" onClick="pulsar()"/>
-        <input type="button" id="otroBoton" value="Pincha mejor aqui"/>
+        <input type="button" id="elBoton" value="Pulsame" onclick="pulsar()"/>
+        <input type="button" id="otroBoton" value="Pincha aqui mejor"/>
         <script>
             let elDiv = document.getElementById("unDiv");
-            // unDiv.style = "background-color: red";
-            elDiv.setAttribute("style","background-color: blue");
+            elDiv.style = "background-color: red";
+            elDiv.setAttribute("style", "background-color: blue");
             let parrafo = document.createElement("p");
-            let textoParr = document.createTextNode("Texto en el párrafo");
+            let textoParr = document.createTextNode("Texto en el parrafo");
             parrafo.appendChild(textoParr);
             elDiv.appendChild(parrafo);
+            
             function pulsar() {
                 alert("Muy bien, sabes hacer click!");
             }
-            let otroBoton = document.getElementById("otroBoton");
-            // otroBoton.addEventListener("click",pulsar);
-            otroBoton.onclick = function() {
+            let otroBoton =  document.getElementById("otroBoton");
+            // otroBoton.addEventListener("click", pulsar);
+            otroBoton.onclick = function() { 
                 let cajaTxt = document.getElementById("miCajaTexto");
                 alert("Has escrito " + cajaTxt.value);
             };

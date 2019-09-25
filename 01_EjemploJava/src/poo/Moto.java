@@ -1,34 +1,29 @@
-package poo;
-/**@author Miguel Maseda
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-public class Moto extends Vehiculo implements Rodable{
+package poo;
+
+/**
+ *
+ * @author alumno
+ */
+public class Moto extends Vehiculo implements Rodable {
 
     public static final byte RUEDAS = 2;
     
-    public Moto(String matricula, String marca) {
-        super(matricula, marca);
+    public Moto(String marca) {
+        super(marca, "SIN MATRICULAR");
     }
     @Override
-    public void abrirPuerta() {
-        System.out.println("Loco, no hay puertas, no te tires.");
-    }
-
-    @Override
-    public String toString() {
-        return "Moto " + getMarca() + " Matricula: " + getMatricula();
-    }
-
-    @Override
-    public void echarCarburante(double cantidad) {
-        System.out.println("No tiene definido la cantidad de carburante!");
+    public void abrirPuerta() {        
+        // System.out.println(  "Loco, no hay puertas, no te tires");
     }
 
     @Override
     public void acelerar() {
-        if (isArrancado()) {
-            modificarNivDeposito(-0.2);
-            //explosionCilindro();
-        }
+        System.out.println("Moto " + getMatricula() + "acelerando ");
     }
 
     @Override
@@ -38,7 +33,6 @@ public class Moto extends Vehiculo implements Rodable{
 
     @Override
     public void moverse() {
-        System.out.println("Nos movemos! " + toString());
+        System.out.println("Moviendo motillo " + toString());
     }
-
 }
