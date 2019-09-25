@@ -70,11 +70,11 @@ public class StringAux {
         if (texto.isEmpty())
             return 0;
         else
-            return quitarEspSobrantes(texto).split(" ").length;
+            return quitarEspSobrantesV1(texto).split(" ").length;
     }
     public static int contarPalabrasV2(String texto) {
         int contador = 1;
-        texto = quitarEspSobrantes(texto);
+        texto = quitarEspSobrantesV1(texto);
         texto = texto.trim();
         if (texto.isEmpty()) {
             return 0;
