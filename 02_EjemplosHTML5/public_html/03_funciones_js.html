@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Funciones JS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>Funciones JS</div>
+        <script>
+            
+            function miFuncion(arg1,arg2) {
+                document.write("<p>Arg 1 " + arg1 + "</p>");
+                document.write("<p>Arg 2 " + arg2 + "</p>");
+                if (arguments.length > 2) {
+                    document.write("<h3>Tercer arg: " + arguments[2] + "</h3>");
+                    if (arguments.length > 3) {
+                        for (arg in arguments) {
+                            document.write("<h2>IN Otro arg: " + arguments[arg] + "</h2>");
+                        }
+                        for (arg of arguments) {
+                            document.write("<h2>OF Otro arg: " + arg + "</h2>");
+                        }
+                    }
+                }
+            }
+            miFuncion("Argumento Texto", 2000);
+            miFuncion(new Object(), false);
+            miFuncion("Un solo argum");
+            miFuncion("Muchos", 100, null, "argumentos");
+            
+            
+            var otraFuncion = function(veces) {
+                for (var i = 0; i < veces; i++){
+                    document.write("<p>Vez: " + i + "<p>");
+                }
+            };
+            otraFuncion.puesSi = "Es unn objeto";
+            otraFuncion(3);
+            document.write("<p>Vez: " + otraFuncion.puesSi + "<p>");
+            
+            var noTipica = new Function("x","y","return x * y");
+            document.write("<p>2 * 2 = " + noTipica(2,2) + "<p>");
+            document.write(miFuncion.toString());
+            
+            
+        </script>
+    </body>
+</html>

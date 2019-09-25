@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>POO con JS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>POO con JS</div>
+        
+        <script>
+            
+            // Estilo EcmaScript 5 
+            var Coche = function(matricula, marca) {
+                this.matricula = matricula;
+                this.marca = marca;
+            };
+            Coche.prototype.arrancar = function (){
+                document.write("<p>Arranca " + this.marca + "</p>");
+                if (true) {
+                    var local = "LOCAL";
+                }
+                document.write("<p>Existe aun " + local + "</p>");
+            };
+            var miCoche = new Coche("1234-fff","Kia");
+            document.write("<p>" + miCoche.marca + "</p>");
+            miCoche.arrancar();
+            var tuCoche = new Coche("4567-EEE","Porche");
+            tuCoche.arrancar();
+            
+            var miCocheDeFinDeSemana = {
+                matricula: "9999-YYY",
+                marca: "Limusina",
+                autoconduccion: function(){
+                    document.write("<p>Dime donde voy</p>");
+                }
+            }
+            miCocheDeFinDeSemana.autoconduccion();
+            
+        </script>
+    </body>
+</html>

@@ -1,11 +1,16 @@
-package clasesjava;
+package stringAuxVarios;
 /**@author Miguel Maseda
  */
-public class StringAux{
+public class StringAux_v1 implements IStringAux{
+
     
     private String string;
     
-    public StringAux(String string){
+    public StringAux_v1(){
+    }
+  
+    
+    public StringAux_v1(String string){
         this.string = string;
     }
     
@@ -15,14 +20,14 @@ public class StringAux{
     
     public void setString(String string) {
         this.string = string;
+    }    
+
+    @Override
+    public String quitarEspaciosSobrantes() {
+        return quitarEspSobrantesV1(string);
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    ///
-    public String quitarEspSobrantes() {
-        return quitarEspSobrantes(string);
-    }
-    ///
-    
+        
     public int contarPalabras(){
         return contarPalabras(string);
     }
@@ -72,36 +77,5 @@ public class StringAux{
             return quitarEspSobrantes(texto).split(" ").length;
     }
     
-    /*
-    public String quitarEspacios() {
-        
-        String[] textoAux = str.split(" ");
-        int totalWords = 0;
-        // contar palabras que no son espacio
-        for(int i = 0; i < textoAux.length; i++) {
-            //System.out.println("posAux:" + i + "contenido: " + textoAux[i]);
-            if(textoAux[i].compareTo("") != 0)
-                totalWords++;
-        }
-        
-        // crear string con tamaño total totalWords y añadir palabras
-        String[] textoAux2 = new String[totalWords];
-        int auxN = 0;
-        for(int i = 0; i < textoAux.length; i++) {
-            if(textoAux[i].compareTo("") != 0) {
-                textoAux2[auxN] = textoAux[i];
-                auxN++;
-            }
-        }
-        
-        // mostrar resultado
-        String textoFinal = String.join(" ",textoAux2);
-        return textoFinal;
-    }
-  
-    public int contarPalabras() {
-        String aux = this.quitarEspacios();
-        return aux.split(" ").length;
-    }
-    */
+
 }
