@@ -5,6 +5,7 @@
  */
 package pruebas;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,15 +22,34 @@ public class TestEjercicioHilos {
 
     final static String RUTA = "./texto_esp.txt";
 
-    public void leerFicheroEjemSecuencial() {
+    public ArrayList<Long> leerFicheroEjemSecuencial() {
+        ArrayList<Long> myArr = new ArrayList<>();
         HiloFichero hf_1 = FactoriaHiloFich.HiloFichero1();
         HiloFichero hf_2 = FactoriaHiloFich.HiloFichero2();
         HiloFichero hf_3 = FactoriaHiloFich.HiloFichero3();
         HiloFichero hf_4 = FactoriaHiloFich.HiloFichero4();
+        
+        long  start = new Date().getTime();
         hf_1.leerFicheroEjem(RUTA);
+        long end = new Date().getTime() - start;
+        myArr.add(end);
+        
+        start = new Date().getTime();
         hf_2.leerFicheroEjem(RUTA);
+        end = new Date().getTime() - start;
+        myArr.add(end);
+        
+        start = new Date().getTime();
         hf_3.leerFicheroEjem(RUTA);
+        end = new Date().getTime() - start;
+        myArr.add(end);
+        
+        start = new Date().getTime();
         hf_4.leerFicheroEjem(RUTA);
+        end = new Date().getTime() - start;
+        myArr.add(end);
+        
+        return myArr;
     }
 
     public static void leerFicheroEjemHilos() {
