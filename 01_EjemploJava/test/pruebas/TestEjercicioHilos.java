@@ -5,7 +5,9 @@
  */
 package pruebas;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.Test;
@@ -30,9 +32,10 @@ public class TestEjercicioHilos {
         hf_2.leerFicheroEjem(RUTA);
         hf_3.leerFicheroEjem(RUTA);
         hf_4.leerFicheroEjem(RUTA);
+
     }
 
-    public static void leerFicheroEjemHilos() {
+    public ArrayList<Long> leerFicheroEjemHilos() {
 
         Thread hiloLeerFicheroV1 = new Thread() {
             @Override
@@ -66,18 +69,22 @@ public class TestEjercicioHilos {
             }
         };
 
+        long start1, start2, start3, start4, end1, end2, end3, end4;
+
         hiloLeerFicheroV1.start();
         hiloLeerFicheroV2.start();
         hiloLeerFicheroV3.start();
         hiloLeerFicheroV4.start();
         try {
             hiloLeerFicheroV1.join();
+            
             hiloLeerFicheroV2.join();
             hiloLeerFicheroV3.join();
             hiloLeerFicheroV4.join();
         } catch (InterruptedException ex) {
             System.out.println("Error: " + ex.getMessage());
         }
+        return new ArrayList<Long>();
     }
 
     @Test
@@ -89,7 +96,7 @@ public class TestEjercicioHilos {
         long start2 = new Date().getTime();
         leerFicheroEjemHilos();
         long end2 = new Date().getTime() - start2;
-        
+
         System.out.println("Con secuencial tardamos " + end1 + " milisegundos");
         System.out.println("Con hilos tardamos " + end2 + " milisegundos");
 
