@@ -5,6 +5,9 @@
  */
 package pruebas;
 
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import threads.FactoriaHiloFich;
@@ -15,36 +18,80 @@ import threads.HiloFichero;
  * @author alumno
  */
 public class TestEjercicioHilos {
-    
-    public TestEjercicioHilos() {
-        String ruta = "C:\\Users\\alumno\\Desktop\\ESCUELA_JAVA\\escuela_java.git\\01_EjemploJava\\texto_esp.txt";
+
+    final static String RUTA = "./texto_esp.txt";
+
+    public void leerFicheroEjemSecuencial() {
         HiloFichero hf_1 = FactoriaHiloFich.HiloFichero1();
         HiloFichero hf_2 = FactoriaHiloFich.HiloFichero2();
         HiloFichero hf_3 = FactoriaHiloFich.HiloFichero3();
         HiloFichero hf_4 = FactoriaHiloFich.HiloFichero4();
-        hf_1.leerFicheroEjem(ruta);
-        hf_2.leerFicheroEjem(ruta);
-        hf_3.leerFicheroEjem(ruta);
-        hf_4.leerFicheroEjem(ruta);
-        
+        hf_1.leerFicheroEjem(RUTA);
+        hf_2.leerFicheroEjem(RUTA);
+        hf_3.leerFicheroEjem(RUTA);
+        hf_4.leerFicheroEjem(RUTA);
     }
-    
-    
+
     public static void leerFicheroEjemHilos() {
+
         Thread hiloLeerFicheroV1 = new Thread() {
-         //   HiloFichero hf1 = new HiloFichero();
+            @Override
+            public void run() {
+                HiloFichero hf_1 = FactoriaHiloFich.HiloFichero1();
+                hf_1.leerFicheroEjem(RUTA);
+            }
         };
-        
+
         Thread hiloLeerFicheroV2 = new Thread() {
-            
+            @Override
+            public void run() {
+                HiloFichero hf_2 = FactoriaHiloFich.HiloFichero2();
+                hf_2.leerFicheroEjem(RUTA);
+            }
         };
-        
+
         Thread hiloLeerFicheroV3 = new Thread() {
-            
+            @Override
+            public void run() {
+                HiloFichero hf_3 = FactoriaHiloFich.HiloFichero3();
+                hf_3.leerFicheroEjem(RUTA);
+            }
         };
-        
+
         Thread hiloLeerFicheroV4 = new Thread() {
-            
+            @Override
+            public void run() {
+                HiloFichero hf_4 = FactoriaHiloFich.HiloFichero4();
+                hf_4.leerFicheroEjem(RUTA);
+            }
         };
+
+        hiloLeerFicheroV1.start();
+        hiloLeerFicheroV2.start();
+        hiloLeerFicheroV3.start();
+        hiloLeerFicheroV4.start();
+        try {
+            hiloLeerFicheroV1.join();
+            hiloLeerFicheroV2.join();
+            hiloLeerFicheroV3.join();
+            hiloLeerFicheroV4.join();
+        } catch (InterruptedException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+    }
+
+    @Test
+    public void medirTiempos() {
+        long start1 = new Date().getTime();
+        leerFicheroEjemSecuencial();
+        long end1 = new Date().getTime() - start1;
+
+        long start2 = new Date().getTime();
+        leerFicheroEjemHilos();
+        long end2 = new Date().getTime() - start2;
+        
+        System.out.println("Con secuencial tardamos " + end1 + " milisegundos");
+        System.out.println("Con hilos tardamos " + end2 + " milisegundos");
+
     }
 }
