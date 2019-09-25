@@ -11,15 +11,12 @@ import clasesjava.StringAux;
  *
  * @author alumno
  */
-public class HiloFicheroStrAuxV1 extends HiloFichero {
-
-    public HiloFicheroStrAuxV1(IStringAux strAux) {
-        super(strAux);
-    }
-
+public class StringAuxV4 implements IStringAux {
+   
+    
     @Override
-    protected String quitarEspacios(String s) {
-        return StringAux.quitarEspSobrantesV1(s);
+    public String quitarEspacios(String str) {
+        return StringAux.quitarEspSobrantesV4(str);
     }
     
 }

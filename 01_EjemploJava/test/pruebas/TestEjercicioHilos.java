@@ -7,6 +7,7 @@ package pruebas;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import threads.HiloFicheroStrAuxV1;
 
 /**
  *
@@ -14,13 +15,13 @@ import static org.junit.Assert.*;
  */
 public class TestEjercicioHilos {
     
-    public TestEjercicioHilos() {
+
+    public void strSecuencial(){
+        
     }
 
     
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+
+    @Test
+    public void testTiempo() {}
 }

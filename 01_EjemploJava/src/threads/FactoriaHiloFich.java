@@ -10,11 +10,20 @@ package threads;
  * @author alumno
  */
 public class FactoriaHiloFich {
-   
+
     public static HiloFichero HiloFichero1() {
         return new HiloFicheroStrAuxV1(new StringAuxV1());
     }
+
     public static HiloFichero HiloFichero2() {
-        return new HiloFicheroStrAuxV2(new StringAuxV1());
+        return new HiloFicheroStrAuxV2(new StringAuxV2());
+    }
+
+    public static HiloFichero HiloFichero3() {
+        return new HiloFicheroStrAuxV3(new StringAuxV3());
+    }
+
+    public static HiloFichero HiloFichero4() {
+        return new HiloFicheroStrAuxV2(new StringAuxV4());
     }
 }
