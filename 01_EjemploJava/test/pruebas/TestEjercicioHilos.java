@@ -7,6 +7,8 @@ package pruebas;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import threads.HiloFichero;
+import threads.HiloFicheroStrAuxV1;
 
 /**
  *
@@ -15,11 +17,26 @@ import static org.junit.Assert.*;
 public class TestEjercicioHilos {
     
     public TestEjercicioHilos() {
+        
+        
     }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    
+    
+    public static void leerFicheroEjemHilos() {
+        Thread hiloLeerFicheroV1 = new Thread() {
+         //   HiloFichero hf1 = new HiloFichero();
+        };
+        
+        Thread hiloLeerFicheroV2 = new Thread() {
+            
+        };
+        
+        Thread hiloLeerFicheroV3 = new Thread() {
+            
+        };
+        
+        Thread hiloLeerFicheroV4 = new Thread() {
+            
+        };
+    }
 }

@@ -17,8 +17,7 @@ import threads.HiloFicheroStrAuxV2;
  * @author alumno
  */
 public class TestFicheros {
-    
-    
+
     public TestFicheros() {
     }
 
