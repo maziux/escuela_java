@@ -5,9 +5,10 @@
  */
 package pruebas;
 
+import clasesjava.HiloObservado;
+import clasesjava.ObservaHilo;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.Test;
@@ -23,19 +24,37 @@ public class TestEjercicioHilos {
 
     final static String RUTA = "./texto_esp.txt";
 
-    public void leerFicheroEjemSecuencial() {
+    public ArrayList<Long> leerFicheroEjemSecuencial() {
+        ArrayList<Long> myArr = new ArrayList<>();
         HiloFichero hf_1 = FactoriaHiloFich.HiloFichero1();
         HiloFichero hf_2 = FactoriaHiloFich.HiloFichero2();
         HiloFichero hf_3 = FactoriaHiloFich.HiloFichero3();
         HiloFichero hf_4 = FactoriaHiloFich.HiloFichero4();
-        hf_1.leerFicheroEjem(RUTA);
-        hf_2.leerFicheroEjem(RUTA);
-        hf_3.leerFicheroEjem(RUTA);
-        hf_4.leerFicheroEjem(RUTA);
 
+        long start = new Date().getTime();
+        hf_1.leerFicheroEjem(RUTA);
+        long end = new Date().getTime() - start;
+        myArr.add(end);
+
+        start = new Date().getTime();
+        hf_2.leerFicheroEjem(RUTA);
+        end = new Date().getTime() - start;
+        myArr.add(end);
+
+        start = new Date().getTime();
+        hf_3.leerFicheroEjem(RUTA);
+        end = new Date().getTime() - start;
+        myArr.add(end);
+
+        start = new Date().getTime();
+        hf_4.leerFicheroEjem(RUTA);
+        end = new Date().getTime() - start;
+        myArr.add(end);
+
+        return myArr;
     }
 
-    public ArrayList<Long> leerFicheroEjemHilos() {
+    public void leerFicheroEjemHilos() {
 
         Thread hiloLeerFicheroV1 = new Thread() {
             @Override
@@ -69,36 +88,46 @@ public class TestEjercicioHilos {
             }
         };
 
-        long start1, start2, start3, start4, end1, end2, end3, end4;
+        HiloObservado leerFicheroV1Observed = new HiloObservado(hiloLeerFicheroV1);
+        HiloObservado leerFicheroV2Observed = new HiloObservado(hiloLeerFicheroV2);
+        HiloObservado leerFicheroV3Observed = new HiloObservado(hiloLeerFicheroV3);
+        HiloObservado leerFicheroV4Observed = new HiloObservado(hiloLeerFicheroV4);
 
-        hiloLeerFicheroV1.start();
-        hiloLeerFicheroV2.start();
-        hiloLeerFicheroV3.start();
-        hiloLeerFicheroV4.start();
-        try {
-            hiloLeerFicheroV1.join();
-            
-            hiloLeerFicheroV2.join();
-            hiloLeerFicheroV3.join();
-            hiloLeerFicheroV4.join();
-        } catch (InterruptedException ex) {
-            System.out.println("Error: " + ex.getMessage());
-        }
-        return new ArrayList<Long>();
+        ObservaHilo observador1 = new ObservaHilo();
+        ObservaHilo observador2 = new ObservaHilo();
+        ObservaHilo observador3 = new ObservaHilo();
+        ObservaHilo observador4 = new ObservaHilo();
+
+        leerFicheroV1Observed.addObserver(observador1);
+        leerFicheroV2Observed.addObserver(observador2);
+        leerFicheroV3Observed.addObserver(observador3);
+        leerFicheroV4Observed.addObserver(observador4);
+
+        leerFicheroV1Observed.ejecutarHilo();
+        leerFicheroV2Observed.ejecutarHilo();
+        leerFicheroV3Observed.ejecutarHilo();
+        leerFicheroV4Observed.ejecutarHilo();
+
+
+        System.out.println(observador1.getTiempo());
+        System.out.println(observador2.getTiempo());
+        System.out.println(observador3.getTiempo());
+        System.out.println(observador4.getTiempo());
     }
 
     @Test
     public void medirTiempos() {
-        long start1 = new Date().getTime();
-        leerFicheroEjemSecuencial();
-        long end1 = new Date().getTime() - start1;
-
-        long start2 = new Date().getTime();
+//        long start1 = new Date().getTime();
+//        leerFicheroEjemSecuencial();
+//        long end1 = new Date().getTime() - start1;
+//
+//        long start2 = new Date().getTime();
+//        leerFicheroEjemHilos();
+//        long end2 = new Date().getTime() - start2;
+//
+//        System.out.println("Con secuencial tardamos " + end1 + " milisegundos");
+//        System.out.println("Con hilos tardamos " + end2 + " milisegundos");
         leerFicheroEjemHilos();
-        long end2 = new Date().getTime() - start2;
-
-        System.out.println("Con secuencial tardamos " + end1 + " milisegundos");
-        System.out.println("Con hilos tardamos " + end2 + " milisegundos");
 
     }
 }
