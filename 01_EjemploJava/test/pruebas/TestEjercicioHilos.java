@@ -7,8 +7,8 @@ package pruebas;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import threads.FactoriaHiloFich;
 import threads.HiloFichero;
-import threads.HiloFicheroStrAuxV1;
 
 /**
  *
@@ -17,7 +17,15 @@ import threads.HiloFicheroStrAuxV1;
 public class TestEjercicioHilos {
     
     public TestEjercicioHilos() {
-        
+        String ruta = "C:\\Users\\alumno\\Desktop\\ESCUELA_JAVA\\escuela_java.git\\01_EjemploJava\\texto_esp.txt";
+        HiloFichero hf_1 = FactoriaHiloFich.HiloFichero1();
+        HiloFichero hf_2 = FactoriaHiloFich.HiloFichero2();
+        HiloFichero hf_3 = FactoriaHiloFich.HiloFichero3();
+        HiloFichero hf_4 = FactoriaHiloFich.HiloFichero4();
+        hf_1.leerFicheroEjem(ruta);
+        hf_2.leerFicheroEjem(ruta);
+        hf_3.leerFicheroEjem(ruta);
+        hf_4.leerFicheroEjem(ruta);
         
     }
     
