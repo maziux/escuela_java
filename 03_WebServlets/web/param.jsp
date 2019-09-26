@@ -4,19 +4,15 @@
     Author     : alumno
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="head.jsp" %>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Datos introducidos</title>
-        <link rel="stylesheet" href="./estilos/estilos.jsp">
-    </head>
+    <%= head("Parámetros") %> 
     <body>
         <%@include file="header.jsp" %>
         <h1>Datos introducidos</h1>
         <p>Te llamas <% out.println(request.getParameter("nombre")); %></p>
-        <p>y tienes <% out.println(request.getParameter("edad")); %> aÃ±os</p> 
+        <p>y tienes <% out.println(request.getParameter("edad")); %> años</p> 
         <!--
         <p>tu correo es <% out.println(request.getParameter("mail")); %></p>
         <p>el password es: <% out.println(request.getParameter("pass")); %></p>
