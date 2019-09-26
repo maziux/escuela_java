@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
     <head>
         <title>Ejemplo MVC con JSP y Servlet</title>
@@ -8,27 +7,23 @@
     </head>
     <body>
         <h1>Ejemplo MVC con JSP y Servlet</h1>
-        
         <h2>Añadir persona</h2>
-        <form name='form1' method='post' action='./personas.do'>
+        <form name='form1' method='post' action='./personas.do'>            
             <table border='1'>
-                <tr><td>Nombre:</td>
+                <tr><td>Nombre:</td>  
                     <td><input type='text' name='nombre' id='nombre'/></td></tr>
-                <tr><td>Edad:</td>
+                <tr><td>Edad:</td>  
                     <td><input type='number' name='edad' id='edad'/></td></tr>
             </table>
-            <input type='submit' value='Enviar'/>
+            <input type='submit' value='Enviar'/>             
         </form>
-        
         <h2>Buscar persona</h2>
-        <form name='formBusq' method='get' action='./personas.do'>
+        <form name='formBusq' method='get' action='./personas.do'>            
             <table border='1'>
-                <tr><td>Nombre:</td>
-                    <td><input type='text' name='nombre' id='nombre'/></td></tr>
-                <tr><td>Edad:</td>
-                    <td><input type='number' name='edad' id='edad'/></td></tr>
-            </table>
-            <input type='submit' value='Enviar'/>
+                <tr><td>Nombre:</td>  
+                    <td><input type='text' name='nombre' id='nombre'/></td>
+                    <td><input type='submit' value='Buscar'/>  </td></tr>
+            </table>                       
         </form>
     </body>
 </html>

@@ -1,6 +1,6 @@
 <%-- 
     Document   : error
-    Created on : 26-sep-2019, 13:42:24
+    Created on : 26-sep-2019, 13:42:14
     Author     : alumno
 --%>
 
@@ -13,8 +13,9 @@
     </head>
     <body>
         <h1>Error en registro</h1>
-        Error: <span style="color: red">
-            <%= session.getAttribute("mensajeError") %>                    
+        Error: 
+        <span style="color: red">
+            <%= /*request.getSession()*/ session.getAttribute("mensajeError") %>                    
         </span>
     </body>
 </html>

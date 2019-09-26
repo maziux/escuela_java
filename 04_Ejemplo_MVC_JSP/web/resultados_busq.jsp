@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Resultados_busq
-    Created on : 26-sep-2019, 15:56:04
+    Document   : resultados_busq
+    Created on : 26-sep-2019, 15:55:55
     Author     : alumno
 --%>
 
@@ -16,15 +16,16 @@
         <h1>Ejemplo MVC con JSP y Servlet</h1>
         <h2>Usuario</h2>
         <% Persona pers = (Persona) session.getAttribute("resultadoBusq"); %>
-        <% if (pers != null) {%>
-            <label for="nombre">Nombre: </label>
-            <input id="nombre" readonly value="<%= pers.getNombre() %>" />
-            <label for="edad">Edad: </label>
-            <input id="edad" readonly value="<%= pers.getEdad() %>" />
-        <% } else { %>
-        <span style="color: red">
-            No se han encontrado personas
-        </span>
+        <% if (pers != null) { %>
+                <label for="nombre">Nombre: </label>
+                <input id="nombre" readonly 
+                       value="<%= pers.getNombre() %>"/>
+                <label for="edad">Edad </label>
+                <input id="edad" readonly value="<%= pers.getEdad() %>"/>
+        <% } else { %>            
+                <span style="color: red">
+                    No se han encontrado personas
+                </span>
         <% } %>
     </body>
 </html>
