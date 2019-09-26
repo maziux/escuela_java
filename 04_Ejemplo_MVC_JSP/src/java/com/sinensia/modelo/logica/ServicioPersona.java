@@ -28,10 +28,22 @@ public class ServicioPersona {
     
     private ArrayList<Persona> personas;
     
-    public Persona addPersonas(String nombre, String edad, String email, String password)
+    public Persona addPersona(String nombre, String edad, String email, String password)
         throws NumberFormatException, IOException, IllegalArgumentException {
         
-        if (nombre.equals("")) {
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        if(password.contains(" ")) {
+            throw new IllegalArgumentException("La contraseña no debe tener espacios");
+        } else if (nombre.equals("")) {
             throw new IllegalArgumentException("El nombre es vacío");
         } else  if ( nombre.length() < 2) {
             throw new IllegalArgumentException("El nombre es demasiado corto");
