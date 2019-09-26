@@ -41,7 +41,7 @@ public class ControladorPersonasServlet extends HttpServlet {
         String password = request.getParameter("pass");
         
         try {
-            Persona p = ServicioPersona.getInstancia().addPersonas(nombre, edad, email, password);
+            Persona p = ServicioPersona.getInstancia().addPersona(nombre, edad, email, password);
             if (p == null) {
                 request.getRequestDispatcher("error.jsp").forward(request, response);
             } else {

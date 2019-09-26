@@ -8,6 +8,7 @@ package com.sinensia.modelo.logica;
 import com.sinensia.modelo.Persona;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 /** Singleton porque sólo queremos un servicio por aplicación/servidor
  *
@@ -28,9 +29,14 @@ public class ServicioPersona {
     
     private ArrayList<Persona> personas;
     
-    public Persona addPersonas(String nombre, String edad, String email, String password)
+    public Persona addPersona(String nombre, String edad, String email, String password)
         throws NumberFormatException, IOException, IllegalArgumentException {
         
+        String emailRegexp = "[^@]+@[^@]+\\.[a-zA-Z]{2,}";
+        
+        if (! Pattern.matches(emailRegexp, email)) {
+            throw new IllegalArgumentException("Mail no valido");
+        }
         if (nombre.equals("")) {
             throw new IllegalArgumentException("El nombre es vacío");
         } else  if ( nombre.length() < 2) {
@@ -42,7 +48,7 @@ public class ServicioPersona {
             if (intEdad <= 12 ) {
                  throw new IllegalArgumentException("La edad debe ser mayor que 12");
             } else {
-                Persona p = new Persona(nombre, intEdad);
+                Persona p = new Persona(nombre, intEdad, email, password);
                 personas.add(p);
                 return p;
             }
