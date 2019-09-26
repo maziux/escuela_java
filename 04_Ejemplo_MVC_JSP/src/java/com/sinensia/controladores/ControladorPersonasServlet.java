@@ -37,9 +37,11 @@ public class ControladorPersonasServlet extends HttpServlet {
         // request.getSession().setMaxInactiveInterval(60);
         String nombre = request.getParameter("nombre"); // name del INPUT
         String edad = request.getParameter("edad"); 
+        String email = request.getParameter("mail");
+        String password = request.getParameter("pass");
         
         try {
-            Persona p = ServicioPersona.getInstancia().addPersonas(nombre, edad);
+            Persona p = ServicioPersona.getInstancia().addPersonas(nombre, edad, email, password);
             if (p == null) {
                 request.getRequestDispatcher("error.jsp").forward(request, response);
             } else {
@@ -55,6 +57,7 @@ public class ControladorPersonasServlet extends HttpServlet {
             request.getSession().setAttribute("mensajeError", "Error genérico: " + ex.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);            
         }
+        // TODO Ampliar los catch para capturar los distintos tipos de errores con password y mail
     }
 
     /**

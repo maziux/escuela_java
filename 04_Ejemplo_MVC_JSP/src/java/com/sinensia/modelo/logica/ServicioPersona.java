@@ -28,7 +28,7 @@ public class ServicioPersona {
     
     private ArrayList<Persona> personas;
     
-    public Persona addPersonas(String nombre, String edad)
+    public Persona addPersonas(String nombre, String edad, String email, String password)
         throws NumberFormatException, IOException, IllegalArgumentException {
         
         if (nombre.equals("")) {
