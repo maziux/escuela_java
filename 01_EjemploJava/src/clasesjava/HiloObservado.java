@@ -43,6 +43,7 @@ public class HiloObservado extends Observable {
         finish = new Date().getTime() - start;
         
         if (!hilo.isAlive()) {
+            
             observers.forEach((observer) -> {
                 observer.update(true, finish);
             });

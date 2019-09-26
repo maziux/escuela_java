@@ -54,7 +54,7 @@ public class TestEjercicioHilos {
         return myArr;
     }
 
-    public void leerFicheroEjemHilos() {
+    public ArrayList<Long> leerFicheroEjemHilos() {
 
         Thread hiloLeerFicheroV1 = new Thread() {
             @Override
@@ -108,26 +108,28 @@ public class TestEjercicioHilos {
         leerFicheroV3Observed.ejecutarHilo();
         leerFicheroV4Observed.ejecutarHilo();
 
+        ArrayList<Long> tiempos = new ArrayList<>();
+        tiempos.add(observador1.getTiempo());
+        tiempos.add(observador2.getTiempo());
+        tiempos.add(observador3.getTiempo());
+        tiempos.add(observador4.getTiempo());
 
-        System.out.println(observador1.getTiempo());
-        System.out.println(observador2.getTiempo());
-        System.out.println(observador3.getTiempo());
-        System.out.println(observador4.getTiempo());
+        return tiempos;
     }
 
     @Test
     public void medirTiempos() {
-//        long start1 = new Date().getTime();
-//        leerFicheroEjemSecuencial();
-//        long end1 = new Date().getTime() - start1;
-//
-//        long start2 = new Date().getTime();
-//        leerFicheroEjemHilos();
-//        long end2 = new Date().getTime() - start2;
-//
-//        System.out.println("Con secuencial tardamos " + end1 + " milisegundos");
-//        System.out.println("Con hilos tardamos " + end2 + " milisegundos");
-        leerFicheroEjemHilos();
 
+        ArrayList<Long> tiemposHilos = leerFicheroEjemHilos();
+        ArrayList<Long> tiemposSecuencial = leerFicheroEjemSecuencial();
+        int cont = 1;
+        for (long l : tiemposHilos) {
+            System.out.println("Hilos, método " + cont + ": " + l);
+            cont++;
+        }
+        for (long l : tiemposSecuencial) {
+            System.out.println("Secuencial, método " + cont + ": " + l);
+            cont++;
+        }
     }
 }
