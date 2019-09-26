@@ -36,8 +36,7 @@ public class ServicioPersona {
         
         if (! Pattern.matches(emailRegexp, email)) {
             throw new IllegalArgumentException("Mail no valido");
-        }
-        if (nombre.equals("")) {
+        } else if (nombre.equals("")) {
             throw new IllegalArgumentException("El nombre es vacío");
         } else  if ( nombre.length() < 2) {
             throw new IllegalArgumentException("El nombre es demasiado corto");
