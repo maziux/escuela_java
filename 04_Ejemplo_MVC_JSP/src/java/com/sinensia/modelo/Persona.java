@@ -18,9 +18,11 @@ public class Persona {
     private String password;
 
 
-    public Persona(String nombre, int edad) {
+    public Persona(String nombre, int edad, String mail, String password) {
         this.nombre = nombre;
         this.edad = edad;
+        this.mail = mail;
+        this.password = password;
     }
 
     public String getNombre() {
