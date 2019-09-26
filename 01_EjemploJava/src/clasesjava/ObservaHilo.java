@@ -25,7 +25,7 @@ public class ObservaHilo implements Observer{
     }
     
     @Override
-    public void update(boolean terminado, long tiempo) {
+    public void update(Object o, boolean terminado, long tiempo) {
         this.terminado = terminado;
         this.tiempo = tiempo;
     }

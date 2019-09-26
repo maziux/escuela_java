@@ -45,7 +45,7 @@ public class HiloObservado extends Observable {
         if (!hilo.isAlive()) {
             
             observers.forEach((observer) -> {
-                observer.update(true, finish);
+                observer.update(this, true, finish);
             });
         }
 

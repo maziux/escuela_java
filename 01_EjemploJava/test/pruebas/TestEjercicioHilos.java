@@ -119,16 +119,24 @@ public class TestEjercicioHilos {
 
     @Test
     public void medirTiempos() {
+        ArrayList<Long> metodoSecuencial = new ArrayList<>();
+        long start1 = new Date().getTime();
+        metodoSecuencial.addAll(leerFicheroEjemSecuencial());
+        long end1 = new Date().getTime() - start1;
+        
+        long start2 = new Date().getTime();
+        leerFicheroEjemHilos();
+        long end2 = new Date().getTime() - start2;
 
         ArrayList<Long> tiemposHilos = leerFicheroEjemHilos();
         ArrayList<Long> tiemposSecuencial = leerFicheroEjemSecuencial();
         int cont = 1;
         for (long l : tiemposHilos) {
-            System.out.println("Hilos, mÃ©todo " + cont + ": " + l);
+            System.out.println("Hilos, método " + cont + ": " + l);
             cont++;
         }
         for (long l : tiemposSecuencial) {
-            System.out.println("Secuencial, mÃ©todo " + cont + ": " + l);
+            System.out.println("Secuencial, método " + cont + ": " + l);
             cont++;
         }
     }

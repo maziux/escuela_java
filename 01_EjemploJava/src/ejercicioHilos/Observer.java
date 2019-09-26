@@ -10,5 +10,5 @@ package ejercicioHilos;
  * @author alumno
  */
 public interface Observer {
-    public void update(boolean terminado, long tiempo);
+    public void update(Object o, boolean terminado, long tiempo);
 }

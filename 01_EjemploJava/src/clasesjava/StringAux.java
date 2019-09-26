@@ -9,7 +9,7 @@ package clasesjava;
  *
  * @author alumno
  */
-public class StringAux {
+public class StringAux{
     
     private String string;
 
@@ -41,6 +41,7 @@ public class StringAux {
                     result += ' ';
             }
         }
+        
         return result;
     }
     public static String  quitarEspSobrantesV2(String texto) {
