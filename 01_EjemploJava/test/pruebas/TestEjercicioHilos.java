@@ -117,17 +117,22 @@ public class TestEjercicioHilos {
 
     @Test
     public void medirTiempos() {
-//        long start1 = new Date().getTime();
-//        leerFicheroEjemSecuencial();
-//        long end1 = new Date().getTime() - start1;
-//
-//        long start2 = new Date().getTime();
-//        leerFicheroEjemHilos();
-//        long end2 = new Date().getTime() - start2;
-//
-//        System.out.println("Con secuencial tardamos " + end1 + " milisegundos");
-//        System.out.println("Con hilos tardamos " + end2 + " milisegundos");
+        ArrayList<Long> metodoSecuencial = new ArrayList<>();
+        long start1 = new Date().getTime();
+        metodoSecuencial.addAll(leerFicheroEjemSecuencial());
+        long end1 = new Date().getTime() - start1;
+        
+        long start2 = new Date().getTime();
         leerFicheroEjemHilos();
+        long end2 = new Date().getTime() - start2;
+
+        
+        for (int i = 0; i < metodoSecuencial.size(); i++) {
+            System.out.println("Metodo_"+i+" tarda: " + metodoSecuencial.get(i));
+        }
+        System.out.println("Con secuencial tardamos " + end1 + " milisegundos");
+        System.out.println("Con hilos tardamos " + end2 + " milisegundos");
+
 
     }
 }

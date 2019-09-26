@@ -26,3 +26,6 @@ hs_err_pid*
 /01_EjemploJava/build/
 /01_EjemploJava/dist/
 /02_EjemplosHTML5/nbproject/private/
+/03_WebServlets/nbproject/private/
+/03_WebServlets/build/
+/03_WebServlets/dist/
