@@ -38,6 +38,7 @@ public class ControladorPersonasServlet extends HttpServlet {
 
         // switch para elegir que formulario mostrar
         switch (pantalla) {
+            
             // Pantalla de registro
             case ("form_registro"):
                 try {
@@ -62,7 +63,6 @@ public class ControladorPersonasServlet extends HttpServlet {
                     request.getSession().setAttribute("mensajeError", "Error genérico: " + ex.getMessage());
                     request.getRequestDispatcher("error.jsp").forward(request, response);
                 }
-
                 break;
 
             // Pantalla de modificacion
@@ -71,7 +71,7 @@ public class ControladorPersonasServlet extends HttpServlet {
                 String edad = request.getParameter("edad");
                 String email = request.getParameter("mail");
                 String password = request.getParameter("password");
-
+                
                 if (ServicioPersona.getInstancia().modificarPersona(nombre, edad, email, password)) {
                     // TODO reaccionar en caso de que se registre o no 
                 }

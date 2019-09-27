@@ -22,7 +22,7 @@
             <table border="1">
                 <intpu 
                 <tr><td>Nombre: </td>
-                        <td><input id="nombre" readonly value="<%= pers.getNombre() %>"/></td></tr>
+                        <td><input name="nombre" id="nombre" readonly value="<%= pers.getNombre() %>"/></td></tr>
                 <tr><td><label for="edad">Edad </label></td>
                     <td><input type="number" name="edad" id="edad" value="<%= pers.getEdad() %>"/></td></tr>
                 <tr><td>Email:</td>  
