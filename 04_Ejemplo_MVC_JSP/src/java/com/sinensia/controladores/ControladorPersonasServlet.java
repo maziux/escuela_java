@@ -26,10 +26,10 @@ public class ControladorPersonasServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String pantalla = request.getParameter("botonBuscar2");
+        String tipoBuscar = request.getParameter("botonBuscar");
         
-        switch (pantalla) {
-            case ("buscar") :
+        switch (tipoBuscar) {
+            case ("buscar1") :
                 String nombre = request.getParameter("nombre"); // name del INPUT
                 Persona p = ServicioPersona.getInstancia().getPersona(nombre);
                 request.getSession().setAttribute("resultadoBusq", p);

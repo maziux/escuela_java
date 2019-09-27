@@ -99,9 +99,11 @@ public class ServicioPersona {
         }
         String[] nombres = listaNombres.split(",");
         for (String nombre : nombres) {
-            personas.stream().filter((p) -> (p.getNombre().equals(nombre))).forEachOrdered((p) -> {
-                personasEncontradas.add(p);
-            });
+            for(Persona p: personas) {
+                if(p.getNombre().equalsIgnoreCase(nombre)){
+                    personasEncontradas.add(p);
+                }
+            }
         }
         return personasEncontradas;
     }
