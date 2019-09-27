@@ -91,4 +91,18 @@ public class ServicioPersona {
         }
         return false;
     }
+    
+    public boolean eliminarPersona(String nombre) {
+        Persona auxPer = null;
+        for (Persona p : personas) {
+            if(p.getNombre().equals(nombre))
+                auxPer = p;
+        }
+        if (auxPer == null) {
+            return false;
+        } else {
+            personas.remove(auxPer);
+            return true;
+        }
+    }
 }
