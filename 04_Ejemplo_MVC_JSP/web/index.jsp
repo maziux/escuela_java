@@ -8,8 +8,10 @@
     <body>
         <h1>Ejemplo MVC con JSP y Servlet</h1>
         <h2>Añadir persona</h2>
-        <form name='form1' method='post' action='./personas.do'>            
+        <form name='form1' method='post' action='./personas.do'>  
+            <input type="hidden" name="pantalla" id="pantalla" value="form_registro"/>                       
             <table border='1'>
+                
                 <tr><td>Nombre:</td>  
                     <td><input type='text' name='nombre' id='nombre'/></td></tr>
                 <tr><td>Edad:</td>  

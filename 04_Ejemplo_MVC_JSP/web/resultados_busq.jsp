@@ -17,15 +17,23 @@
         <h2>Usuario</h2>
         <% Persona pers = (Persona) session.getAttribute("resultadoBusq"); %>
         <% if (pers != null) { %>
-                <label for="nombre">Nombre: </label>
-                <input id="nombre" readonly 
-                       value="<%= pers.getNombre() %>"/>
-                <label for="edad">Edad </label>
-                <input id="edad" readonly value="<%= pers.getEdad() %>"/>
+        <form name='form1' method='post' action='./personas.do'>
+            <input type="hidden" name="pantalla" id="pantalla" value="form_modificar"/> 
+            <table border="1">
+                <intpu 
+                <tr><td>Nombre: </td>
+                        <td><input id="nombre" readonly value="<%= pers.getNombre() %>"/></td></tr>
+                <tr><td><label for="edad">Edad </label></td>
+                    <td><input type="number" name="edad" id="edad" value="<%= pers.getEdad() %>"/></td></tr>
+                <tr><td>Email:</td>  
+                    <td><input type='text' name='mail' id='mail' value="<%= pers.getMail() %>"/></td></tr>
+                <tr><td>Password:</td>  
+                    <td><input type='text' name='password' id='password' value="<%= pers.getPassword() %>"/></td></tr>
+            </table>
+            <input type='submit' value='Modificar'/>
+        </form>
         <% } else { %>            
-                <span style="color: red">
-                    No se han encontrado personas
-                </span>
+            <span>No se han encontrado personas</span>
         <% } %>
     </body>
 </html>
