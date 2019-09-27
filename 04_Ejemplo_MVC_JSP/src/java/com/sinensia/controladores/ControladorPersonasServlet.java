@@ -49,7 +49,7 @@ public class ControladorPersonasServlet extends HttpServlet {
                 }
                 if (!personasTotal.isEmpty()) {
                     request.getSession().setAttribute("resultadosBusqueda", personasTotal);
-                    request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
+                    request.getRequestDispatcher("varios_resultados.jsp").forward(request, response);
                 }
         }
         
