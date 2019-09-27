@@ -71,9 +71,21 @@ public class ControladorPersonasServlet extends HttpServlet {
                 String edad = request.getParameter("edad");
                 String email = request.getParameter("mail");
                 String password = request.getParameter("password");
-
-                if (ServicioPersona.getInstancia().modificarPersona(nombre, edad, email, password)) {
-                    // TODO reaccionar en caso de que se registre o no 
+                try {                    
+                    if (ServicioPersona.getInstancia().modificarPersona(nombre, edad, email, password)) {
+                        request.getRequestDispatcher("exito.jsp").forward(request, response);                        
+                    } else {
+                        request.getRequestDispatcher("error.jsp").forward(request, response);
+                    }
+                } catch (NumberFormatException ex) {
+                    request.getSession().setAttribute("mensajeError", "Error numérico: " + ex.getMessage());
+                    request.getRequestDispatcher("error.jsp").forward(request, response);
+                } catch (IllegalArgumentException ex) {
+                    request.getSession().setAttribute("mensajeError", "Error en campos: " + ex.getMessage());
+                    request.getRequestDispatcher("error.jsp").forward(request, response);
+                } catch (Exception ex) {
+                    request.getSession().setAttribute("mensajeError", "Error genérico: " + ex.getMessage());
+                    request.getRequestDispatcher("error.jsp").forward(request, response);
                 }
                 break;
 
