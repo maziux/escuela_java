@@ -20,7 +20,7 @@
         <form name='form1' method='post' action='./personas.do'>
             <input type="hidden" name="pantalla" id="pantalla" value="form_modificar"/> 
             <table border="1">
-                <intpu 
+                
                 <tr><td>Nombre: </td>
                         <td><input name="nombre" id="nombre" readonly value="<%= pers.getNombre() %>"/></td></tr>
                 <tr><td><label for="edad">Edad </label></td>
