@@ -77,7 +77,7 @@ public class ServicioPersona {
     }
 
     public boolean modificarPersona(String nombre, String nuevaEdad, String nuevoMail, String nuevoPassword) {
-        
+
         if (validarDatos(nombre, nuevaEdad, nuevoMail, nuevoPassword)) {
             for (Persona p : personas) {
                 if (p.getNombre().equals(nombre)) {
@@ -91,12 +91,41 @@ public class ServicioPersona {
         }
         return false;
     }
-    
+
+    public ArrayList<Persona> buscarPersonasPorNombres(String listaNombres) {
+        ArrayList<Persona> personasEncontradas = new ArrayList<>();
+        if (listaNombres == null) {
+            return personasEncontradas;
+        }
+        String[] nombres = listaNombres.split(",");
+        for (String nombre : nombres) {
+            personas.stream().filter((p) -> (p.getNombre().equals(nombre))).forEachOrdered((p) -> {
+                personasEncontradas.add(p);
+            });
+        }
+        return personasEncontradas;
+    }
+
+    public ArrayList<Persona> buscarPersonasPorMails(String listaMails) {
+        ArrayList<Persona> personasEncontradas = new ArrayList<>();
+        if (listaMails == null) {
+            return personasEncontradas;
+        }
+        String[] mails = listaMails.split(",");
+        for(String mail : mails){
+            personas.stream().filter((p) ->(p.getMail().equals(mail))).forEachOrdered((p) ->{
+                personasEncontradas.add(p);
+            });
+        }
+        return personasEncontradas;
+    }
+
     public boolean eliminarPersona(String nombre) {
         Persona auxPer = null;
         for (Persona p : personas) {
-            if(p.getNombre().equals(nombre))
+            if (p.getNombre().equals(nombre)) {
                 auxPer = p;
+            }
         }
         if (auxPer == null) {
             return false;
