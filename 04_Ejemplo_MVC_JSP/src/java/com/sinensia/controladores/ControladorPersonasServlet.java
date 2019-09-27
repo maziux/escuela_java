@@ -51,6 +51,7 @@ public class ControladorPersonasServlet extends HttpServlet {
                     if (p == null) {
                         request.getRequestDispatcher("error.jsp").forward(request, response);
                     } else {
+                        request.getSession().setAttribute("tipoExito", "registrado");
                         request.getRequestDispatcher("exito.jsp").forward(request, response);
                     }
                 } catch (NumberFormatException ex) {
@@ -76,7 +77,9 @@ public class ControladorPersonasServlet extends HttpServlet {
                 if (accion.equals("modificar")) {
                     try {
                         if (ServicioPersona.getInstancia().modificarPersona(nombre, edad, email, password)) {
-                            request.getRequestDispatcher("modificacionExito.jsp").forward(request, response);
+                            request.getSession().setAttribute("tipoExito", "modificado");
+                            //request.getRequestDispatcher("modificacionExito.jsp").forward(request, response);
+                            request.getRequestDispatcher("exito.jsp").forward(request, response);
                         } else {
                             request.getRequestDispatcher("error.jsp").forward(request, response);
                         }
@@ -94,7 +97,9 @@ public class ControladorPersonasServlet extends HttpServlet {
                     try {
 
                         if(ServicioPersona.getInstancia().eliminarPersona(nombre)) {
-                            // arreglar esto
+                            // arreglar esto                            
+                            request.getSession().setAttribute("tipoExito", "borrado");
+                            request.getRequestDispatcher("exito.jsp").forward(request, response);
                         }
                     } catch (Exception ex) {
                         request.getSession().setAttribute("mensajeError", "Error borrando gente: " + ex.getMessage());
