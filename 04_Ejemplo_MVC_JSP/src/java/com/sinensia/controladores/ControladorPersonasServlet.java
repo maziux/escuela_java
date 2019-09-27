@@ -38,7 +38,7 @@ public class ControladorPersonasServlet extends HttpServlet {
         String nombre = request.getParameter("nombre"); // name del INPUT
         String edad = request.getParameter("edad"); 
         String email = request.getParameter("mail");
-        String password = request.getParameter("pass");
+        String password = request.getParameter("password");
         
         try {
             Persona p = ServicioPersona.getInstancia().addPersona(nombre, edad, email, password);

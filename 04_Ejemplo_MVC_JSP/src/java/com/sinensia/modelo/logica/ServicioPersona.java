@@ -36,6 +36,8 @@ public class ServicioPersona {
         
         if (! Pattern.matches(emailRegexp, email)) {
             throw new IllegalArgumentException("Mail no valido");
+        } else if(password.contains(" ")) {
+            throw new IllegalArgumentException("La contraseña no debe tener espacios");
         } else if (nombre.equals("")) {
             throw new IllegalArgumentException("El nombre es vacío");
         } else  if ( nombre.length() < 2) {
