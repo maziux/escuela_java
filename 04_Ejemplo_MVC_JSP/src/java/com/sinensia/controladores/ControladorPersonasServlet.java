@@ -38,7 +38,7 @@ public class ControladorPersonasServlet extends HttpServlet {
 
         // switch para elegir que formulario mostrar
         switch (pantalla) {
-            
+
             // Pantalla de registro
             case ("form_registro"):
                 try {
@@ -71,10 +71,37 @@ public class ControladorPersonasServlet extends HttpServlet {
                 String edad = request.getParameter("edad");
                 String email = request.getParameter("mail");
                 String password = request.getParameter("password");
-                
-                if (ServicioPersona.getInstancia().modificarPersona(nombre, edad, email, password)) {
-                    // TODO reaccionar en caso de que se registre o no 
+                String accion = request.getParameter("boton");
+
+                if (accion.equals("modificar")) {
+                    try {
+                        if (ServicioPersona.getInstancia().modificarPersona(nombre, edad, email, password)) {
+                            request.getRequestDispatcher("modificacionExito.jsp").forward(request, response);
+                        } else {
+                            request.getRequestDispatcher("error.jsp").forward(request, response);
+                        }
+                    } catch (NumberFormatException ex) {
+                        request.getSession().setAttribute("mensajeError", "Error en la modificacion numérico: " + ex.getMessage());
+                        request.getRequestDispatcher("error.jsp").forward(request, response);
+                    } catch (IllegalArgumentException ex) {
+                        request.getSession().setAttribute("mensajeError", "Error en la modificacion en campos: " + ex.getMessage());
+                        request.getRequestDispatcher("error.jsp").forward(request, response);
+                    } catch (Exception ex) {
+                        request.getSession().setAttribute("mensajeError", "Error en la modificacion genérico: " + ex.getMessage());
+                        request.getRequestDispatcher("error.jsp").forward(request, response);
+                    }
+                } else if (accion.equals("eliminar")) {
+                    try {
+
+                        if(ServicioPersona.getInstancia().eliminarPersona(nombre)) {
+                            // arreglar esto
+                        }
+                    } catch (Exception ex) {
+                        request.getSession().setAttribute("mensajeError", "Error borrando gente: " + ex.getMessage());
+                        request.getRequestDispatcher("error.jsp").forward(request, response);
+                    }
                 }
+
                 break;
 
         }

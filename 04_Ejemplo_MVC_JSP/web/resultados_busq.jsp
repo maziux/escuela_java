@@ -30,7 +30,8 @@
                 <tr><td>Password:</td>  
                     <td><input type='text' name='password' id='password' value="<%= pers.getPassword() %>"/></td></tr>
             </table>
-            <input type='submit' value='Modificar'/>
+            <input type='submit' name="boton" value='modificar'/>
+            <input type='submit' name="boton" value='eliminar'/>
         </form>
         <% } else { %>            
             <span>No se han encontrado personas</span>
