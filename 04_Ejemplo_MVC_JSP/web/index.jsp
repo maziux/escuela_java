@@ -28,8 +28,18 @@
             <table border='1'>
                 <tr><td>Nombre:</td>  
                     <td><input type='text' name='nombre' id='nombre'/></td>
-                    <td><input type='submit' value='Buscar'/>  </td></tr>
-            </table>                       
+                    <td><input type='submit' name="botonBuscar" value='Buscar'/>  </td></tr>
+            </table>
+        <h2>Buscar PERSONAS por nombre o mail</h2>
+        <form name='formBusq' method='get' action='./personas.do'>            
+            <table border='1'>
+                <tr><td>Nombre:</td>  
+                    <td><input type='text' name='nombres' id='nombre'/></td>
+                <tr><td>Mail:</td>  
+                    <td><input type='text' name='mails' id='mail'/></td>
+                    <td><input type='submit' name="botonBuscar" value='Buscar2'/>  </td></tr>
+            </table>  
+            
         </form>
     </body>
 </html>

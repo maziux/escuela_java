@@ -9,6 +9,8 @@ import com.sinensia.modelo.Persona;
 import com.sinensia.modelo.logica.ServicioPersona;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,12 +25,34 @@ public class ControladorPersonasServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String nombre = request.getParameter("nombre"); // name del INPUT
-        // String edad = request.getParameter("edad"); 
-
-        Persona p = ServicioPersona.getInstancia().getPersona(nombre);
-        request.getSession().setAttribute("resultadoBusq", p);
-        request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
+        
+        String pantalla = request.getParameter("botonBuscar2");
+        
+        switch (pantalla) {
+            case ("buscar") :
+                String nombre = request.getParameter("nombre"); // name del INPUT
+                Persona p = ServicioPersona.getInstancia().getPersona(nombre);
+                request.getSession().setAttribute("resultadoBusq", p);
+                request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
+                break;
+            case ("buscar2"):
+                ArrayList<Persona> personasTotal = new ArrayList<>();
+                String nombres = request.getParameter("nombres");
+                String mails = request.getParameter("mails");
+                ArrayList<Persona> personasEncontradasNombre = ServicioPersona.getInstancia().buscarPersonasPorNombres(nombres);
+                ArrayList<Persona> personasEncontradasMail = ServicioPersona.getInstancia().buscarPersonasPorMails(mails);
+                if (!personasEncontradasNombre.isEmpty()) {
+                    personasTotal.addAll(personasEncontradasNombre);
+                }
+                if (!personasEncontradasMail.isEmpty()) {
+                    personasTotal.addAll(personasEncontradasMail);
+                }
+                if (!personasTotal.isEmpty()) {
+                    request.getSession().setAttribute("resultadosBusqueda", personasTotal);
+                    request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
+                }
+        }
+        
     }
 
     @Override
