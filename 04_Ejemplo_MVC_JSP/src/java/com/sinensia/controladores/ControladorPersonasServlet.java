@@ -25,11 +25,11 @@ public class ControladorPersonasServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String tipoBuscar = request.getParameter("botonBuscar");
-        
+
+        String tipoBuscar = request.getParameter("tipoBuscar");
+
         switch (tipoBuscar) {
-            case ("buscar1") :
+            case ("buscar1"):
                 String nombre = request.getParameter("nombre"); // name del INPUT
                 Persona p = ServicioPersona.getInstancia().getPersona(nombre);
                 request.getSession().setAttribute("resultadoBusq", p);
@@ -50,9 +50,12 @@ public class ControladorPersonasServlet extends HttpServlet {
                 if (!personasTotal.isEmpty()) {
                     request.getSession().setAttribute("resultadosBusqueda", personasTotal);
                     request.getRequestDispatcher("varios_resultados.jsp").forward(request, response);
+                } else if (personasTotal.isEmpty()) {
+                    request.getSession().setAttribute("resultadosBusqueda", personasTotal);
+                    request.getRequestDispatcher("varios_resultados.jsp").forward(request, response);
                 }
         }
-        
+
     }
 
     @Override
@@ -120,7 +123,7 @@ public class ControladorPersonasServlet extends HttpServlet {
                 } else if (accion.equals("eliminar")) {
                     try {
 
-                        if(ServicioPersona.getInstancia().eliminarPersona(nombre)) {
+                        if (ServicioPersona.getInstancia().eliminarPersona(nombre)) {
                             // arreglar esto                            
                             request.getSession().setAttribute("tipoExito", "borrado");
                             request.getRequestDispatcher("exito.jsp").forward(request, response);

@@ -12,10 +12,12 @@
         <title>Error en registro</title>
     </head>
     <body>
+        <%@include file="navegacion.jsp" %>
+
         <h1>Error en registro</h1>
         Error: 
         <span style="color: red">
-            <%= /*request.getSession()*/ session.getAttribute("mensajeError") %>                    
+            <%= /*request.getSession()*/session.getAttribute("mensajeError")%>                    
         </span>
     </body>
 </html>

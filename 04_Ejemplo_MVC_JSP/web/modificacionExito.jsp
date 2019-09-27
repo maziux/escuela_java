@@ -12,6 +12,7 @@
         <title>Exito - Registro modificado</title>
     </head>
     <body>
+        <%@include file="navegacion.jsp" %>
         <h1>Exito - Persona modificada</h1>
         <label for="nombre">Nombre: </label>
         <input id="nombre" readonly value="<%= request.getParameter("nombre") %>"/><br />

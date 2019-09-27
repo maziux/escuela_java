@@ -12,20 +12,21 @@
         <title>Exito - Registro guardado</title>
     </head>
     <body>
+        <%@include file="navegacion.jsp" %>
         <% String aux = session.getAttribute("tipoExito").toString(); %>
         <% if (aux != "borrado") { %>
-            <h1>Exito - <%= aux %></h1>
-            <label for="nombre">Nombre: </label>
-            <input id="nombre" readonly value="<%= request.getParameter("nombre") %>"/><br />
-            <label for="edad">Edad </label>
-            <input id="edad" readonly value="<%= request.getParameter("edad") %>"/><br />
-            <label for="edad">Mail </label>
-            <input id="edad" readonly value="<%= request.getParameter("mail") %>"/><br />
-            <label for="edad">Contraseña </label>
-            <input id="edad" readonly value="<%= request.getParameter("password") %>"/><br />
+        <h1>Exito - <%= aux %></h1>
+        <label for="nombre">Nombre: </label>
+        <input id="nombre" readonly value="<%= request.getParameter("nombre") %>"/><br />
+        <label for="edad">Edad </label>
+        <input id="edad" readonly value="<%= request.getParameter("edad") %>"/><br />
+        <label for="edad">Mail </label>
+        <input id="edad" readonly value="<%= request.getParameter("mail") %>"/><br />
+        <label for="edad">Contraseña </label>
+        <input id="edad" readonly value="<%= request.getParameter("password") %>"/><br />
         <% } else { %>
-            <h1>Exito - <%= aux %></h1>
-            <p> Usuario <%= request.getParameter("nombre") %> ha sido borrado </p>
+        <h1>Exito - <%= aux %></h1>
+        <p> Usuario <%= request.getParameter("nombre") %> ha sido borrado </p>
         <% } %>
     </body>
 </html>

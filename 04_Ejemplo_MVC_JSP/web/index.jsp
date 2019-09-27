@@ -11,7 +11,7 @@
         <form name='form1' method='post' action='./personas.do'>  
             <input type="hidden" name="pantalla" id="pantalla" value="form_registro"/>                       
             <table border='1'>
-                
+
                 <tr><td>Nombre:</td>  
                     <td><input type='text' name='nombre' id='nombre'/></td></tr>
                 <tr><td>Edad:</td>  
@@ -24,22 +24,25 @@
             <input type='submit' value='Enviar'/>             
         </form>
         <h2>Buscar persona</h2>
-        <form name='formBusq' method='get' action='./personas.do'>            
+        <form name='formBusq' method='get' action='./personas.do'>   
+            <input type="hidden" name="tipoBuscar" id="buscarUno" value="buscar1"/>                       
             <table border='1'>
                 <tr><td>Nombre:</td>  
                     <td><input type='text' name='nombre' id='nombre'/></td>
-                    <td><input type='submit' name="botonBuscar" value='buscar1'/>  </td></tr>
+                    <td><input type='submit' name="botonBuscar" value='Buscar'/>  </td></tr>
             </table>
+        </form>
         <h2>Buscar PERSONAS por nombre o mail</h2>
-        <form name='formBusq' method='get' action='./personas.do'>            
+        <form name='formBuscarVarios' method='get' action='./personas.do'>   
+            <input type="hidden" name="tipoBuscar" id="buscarVarios" value="buscar2"/>                       
             <table border='1'>
                 <tr><td>Nombre:</td>  
                     <td><input type='text' name='nombres' id='nombre'/></td>
                 <tr><td>Mail:</td>  
                     <td><input type='text' name='mails' id='mail'/></td>
-                    <td><input type='submit' name="botonBuscar" value='buscar2'/>  </td></tr>
+                    <td><input type='submit' name="botonBuscar" value='Buscar'/>  </td></tr>
             </table>  
-            
+
         </form>
     </body>
 </html>
