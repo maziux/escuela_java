@@ -77,6 +77,7 @@ public class ServicioPersona {
     }
 
     public boolean modificarPersona(String nombre, String nuevaEdad, String nuevoMail, String nuevoPassword) {
+        
         if (validarDatos(nombre, nuevaEdad, nuevoMail, nuevoPassword)) {
             for (Persona p : personas) {
                 if (p.getNombre().equals(nombre)) {
