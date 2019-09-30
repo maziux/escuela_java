@@ -13,13 +13,13 @@
             <table border='1'>
                 
                 <tr><td>Nombre:</td>  
-                    <td><input type='text' name='nombre' id='nombre'/></td></tr>
+                    <td><input type="text" name="nombre" id="nombre"/></td></tr>
                 <tr><td>Edad:</td>  
-                    <td><input type='number' name='edad' id='edad'/></td></tr>
+                    <td><input type="number" name="edad" id="edad"/></td></tr>
                 <tr><td>Email:</td>  
-                    <td><input type='text' name='mail' id='mail'/></td></tr>
+                    <td><input type="text" name="mail" id="mail"/></td></tr>
                 <tr><td>Password:</td>  
-                    <td><input type='password' name='password' id='password'/></td></tr>
+                    <td><input type="password" name="password" id="password"/></td></tr>
             </table>
             <input type='submit' value='Enviar'/>             
         </form>

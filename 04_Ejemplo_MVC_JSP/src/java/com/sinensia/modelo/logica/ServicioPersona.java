@@ -100,7 +100,7 @@ public class ServicioPersona {
         String[] nombres = listaNombres.split(",");
         for (String nombre : nombres) {
             for(Persona p: personas) {
-                if(p.getNombre().equalsIgnoreCase(nombre)){
+                if(p.getNombre().equalsIgnoreCase(nombre.trim())){
                     personasEncontradas.add(p);
                 }
             }
@@ -115,7 +115,7 @@ public class ServicioPersona {
         }
         String[] mails = listaMails.split(",");
         for(String mail : mails){
-            personas.stream().filter((p) ->(p.getMail().equals(mail))).forEachOrdered((p) ->{
+            personas.stream().filter((p) ->(p.getMail().equals(mail.trim()))).forEachOrdered((p) ->{
                 personasEncontradas.add(p);
             });
         }
