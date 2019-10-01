@@ -38,3 +38,7 @@ hs_err_pid*
 /Juego/nbproject/private/
 /Juego/build/
 /Juego/dist/
+/05_CRUD_JSTL_DAO/nbproject/private/
+/05_CRUD_Modelo_DAO/nbproject/private/
+/05_CRUD_Modelo_DAO/build/
+/05_CRUD_Modelo_DAO/dist/
