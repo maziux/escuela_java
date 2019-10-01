@@ -22,4 +22,5 @@ public interface IUserDAO {
     boolean remove(User user)throws SQLException ;
     int getIdFromEmail(String email) throws SQLException;
     User modifyUser(User oldUser, String email, String password, String name, Integer age) throws SQLException;
+    User updateUser(User u) throws SQLException;
 }

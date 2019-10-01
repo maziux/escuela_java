@@ -145,13 +145,36 @@ public class ProbarModeloDAO {
             assertEquals(u_after.getPassword() ,"newPass");            
             assertEquals(u_after.getName() ,"newName");
             assertEquals(u_after.getAge(),90);
+            assertEquals(true,userSrv.remove(u_after.getId()));
             
         } catch (SQLException ex) {
             Logger.getLogger(ProbarModeloDAO.class.getName()).log(Level.SEVERE, null, ex);
             fail("Error en SQL: " + ex.getMessage());
         }
-        
-        
+    }
+    
+    @Test
+    public void modify2() {
+        try {
+            User u_before = userSrv.create("ttt@mail.com","t1234", "Ttttt", 20);
+            int ub_id = u_before.getId();
+            User u_after = new User("new@mail.com", "newPass","newName", 90);
+            u_after.setId(ub_id);
+            
+            u_after = userSrv.updateUser(u_after);
+            
+            assertEquals(u_after.getEmail(),"new@mail.com");            
+            assertEquals(u_after.getPassword() ,"newPass");            
+            assertEquals(u_after.getName() ,"newName");
+            assertEquals(u_after.getAge(),90);
+            
+            assertEquals(true,userSrv.remove(u_after.getId()));
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProbarModeloDAO.class.getName()).log(Level.SEVERE, null, ex);
+            fail("Error en SQL: " + ex.getMessage());
+        }
     }
 
 }

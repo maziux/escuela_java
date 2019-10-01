@@ -47,4 +47,8 @@ public class UserService {
     public User modifyUser(User oldUser, String email, String password, String name, int age) throws SQLException {
         return daoUsers.modifyUser(oldUser, email, password, name, age);
     }
+    
+    public User updateUser(User u) throws SQLException {
+        return daoUsers.updateUser(u);
+    }
 }
