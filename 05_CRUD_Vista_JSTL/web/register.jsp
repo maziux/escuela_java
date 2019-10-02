@@ -33,5 +33,7 @@
             
             <input type="submit" value="Register please!!! En un plis"/>
         </form>
+        <script src="js/md5.min.js"></script>
+        <script src="js/encrypt.js"></script>
     </body>
 </html>

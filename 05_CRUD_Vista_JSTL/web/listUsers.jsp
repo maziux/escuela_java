@@ -53,6 +53,8 @@
             <a href="index.jsp">Inicio</a>
             <p>Error user not logged</p>
         </c:if>
+        <script src="js/md5.min.js"></script>
+        <script src="js/encrypt.js"></script>
 
     </body>
 </html>
