@@ -142,4 +142,24 @@ public class UserDAO_DerbyDB implements IUserDAO {
         }
     }
 
+    @Override
+    public User getValidUser(String email, String password) throws SQLException {
+        try (Connection con = DriverManager.getConnection(CONEX_DB, USER_DB, PSSWD_DB)) {
+            String sqlQueryBusqId = "SELECT id, name, age FROM users WHERE email=? AND password = ?";
+            PreparedStatement prepStmtBusqId = con.prepareCall(sqlQueryBusqId);
+            prepStmtBusqId.setString(1, email);
+            prepStmtBusqId.setString(2, password);
+            ResultSet res = prepStmtBusqId.executeQuery();
+            while (res.next()) {
+                int id = res.getInt("id");
+                String name = res.getString("name");
+                int age = res.getInt("age");
+                User user = new User(email, password, name, age);
+                user.setId(id);
+                return user;
+            }
+        }
+        return null;
+    }
+
 }

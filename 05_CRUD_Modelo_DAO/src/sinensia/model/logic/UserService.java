@@ -79,4 +79,8 @@ public class UserService {
         }
         return u;
     }
+    
+    public User getValidUser(String email, String password) throws SQLException {
+        return daoUsers.getValidUser(email, password);
+    }
 }
