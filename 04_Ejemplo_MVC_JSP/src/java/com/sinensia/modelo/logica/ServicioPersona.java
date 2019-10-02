@@ -53,6 +53,7 @@ public class ServicioPersona {
         }
     }
 
+<<<<<<< HEAD
     public Persona getPersona(String nombre) {
         for (Persona p : personas) {
             if (p.getNombre().equalsIgnoreCase(nombre)) {
@@ -60,6 +61,36 @@ public class ServicioPersona {
             }
         }
         return null;
+=======
+    public ArrayList<Persona> buscarPersonasPorNombres(String listaNombres) {
+        ArrayList<Persona> personasEncontradas = new ArrayList<>();
+        if (listaNombres == null) {
+            return personasEncontradas;
+        }
+        String[] nombres = listaNombres.split(",");
+        for (String nombre : nombres) {
+            for(Persona p: personas) {
+                if(p.getNombre().equalsIgnoreCase(nombre.trim())){
+                    personasEncontradas.add(p);
+                }
+            }
+        }
+        return personasEncontradas;
+    }
+
+    public ArrayList<Persona> buscarPersonasPorMails(String listaMails) {
+        ArrayList<Persona> personasEncontradas = new ArrayList<>();
+        if (listaMails == null) {
+            return personasEncontradas;
+        }
+        String[] mails = listaMails.split(",");
+        for(String mail : mails){
+            personas.stream().filter((p) ->(p.getMail().equals(mail.trim()))).forEachOrdered((p) ->{
+                personasEncontradas.add(p);
+            });
+        }
+        return personasEncontradas;
+>>>>>>> 94af767086859bea7808098e8ad27c5046918aee
     }
 
     public boolean removePersona(String nombre) {
