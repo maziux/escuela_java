@@ -14,15 +14,10 @@ public class Persona {
     
     private String nombre;
     private int edad;
-    private String mail;
-    private String password;
 
-
-    public Persona(String nombre, int edad, String mail, String password) {
+    public Persona(String nombre, int edad) {
         this.nombre = nombre;
         this.edad = edad;
-        this.mail = mail;
-        this.password = password;
     }
 
     public String getNombre() {
@@ -40,23 +35,6 @@ public class Persona {
 
     public void setEdad(int edad) {
         this.edad = edad;
-    }
-
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
 }

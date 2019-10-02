@@ -1,14 +1,26 @@
-package sinensia.modelo;
-/** Clase que pide los campos del usuario.
- * 
- * @author Miguel Maseda
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-public class User {
+package sinensia.modelo;
+
+import java.io.Serializable;
+
+/** Clase que define los campos de los usuarios
+ *
+ * @author alumno
+ */
+public class User implements Serializable {
     
     private Integer id;
+
     private String email;
+
     private String password;
+
     private String name;
+
     private int age;
 
     public User(String email, String password, String name, int age) {
@@ -17,6 +29,8 @@ public class User {
         this.name = name;
         this.age = age;
     }
+
+    
     
     /**
      * Get the value of password
@@ -72,14 +86,6 @@ public class User {
         this.age = age;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    
     /**
      * Get the value of name
      *
@@ -98,4 +104,12 @@ public class User {
         this.name = name;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
 }

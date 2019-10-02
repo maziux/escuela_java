@@ -7,5 +7,5 @@ CREATE TABLE users (
 	name VARCHAR(50) NOT NULL,
 	age INTEGER NOT NULL,
 	CONSTRAINT primary_key PRIMARY KEY(id),
-	CONSTRAINT unique_email UNIQUE(email)
+	CONSTRAINT unique_email UNIQUE(email)	
 )
