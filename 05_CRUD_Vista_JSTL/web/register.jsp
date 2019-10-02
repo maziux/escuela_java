@@ -13,6 +13,7 @@
     </head>
     <body>
         <h1>Register (Create)</h1>
+        <a href="index.jsp">Inicio</a>
         <form name="form1" action="users.do" method="post">
             <label for="email">Email: </label>
             <input id="email" name="email" type="email" placeholder="Write your email"
