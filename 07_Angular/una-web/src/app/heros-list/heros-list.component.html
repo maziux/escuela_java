@@ -1,0 +1,7 @@
+<h2>Listado de Heroes</h2>
+<ul class="ul-heroes">
+    <li *ngFor = "let hero of heroes">
+        <span class="li-heroe">{{ hero.id }} </span> {{ hero.name }} <br/>
+        <span><img src='../../assets/img/{{hero.file}}'/></span>
+    </li>
+</ul>

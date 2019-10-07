@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cliente Rest con Ajax</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Cliente Rest con Ajax</h1>
+        <form name="form1" action="api/users" method="post">
+            
+            <label for="id">Id: </label>
+            <input id="id" type="email"/><br/>
+            
+            <label for="email">Email: </label>
+            <input id="email" type="email"/><br/>
+            
+            <label for="password">Password: </label>
+            <input id="password" type="password"/><br/>
+            
+            <label for="name">Name: </label>
+            <input id="name" type="text"/><br/>
+            
+            <label for="age">Age: </label>
+            <input id="age" type="number"/><br/>
+            
+            
+        <input id="btnSend" type="button" value="AJAX Register"/>
+            
+       </form>
+   
+        
+        <table id="data_table"></table>
+        
+        <script src="jquery-3.4.1.js"></script>
+        
+        <script src="js/ajaxRestClient.js"></script>
+        <script src="js/httpPost.js"></script>
+    </body>
+</html>

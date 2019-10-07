@@ -14,6 +14,10 @@
         <ul>
             <li> <a href="register.jsp">Register</a> </li>
             <li> <a href="users.do">Users list</a> </li>
+            <li> <a href="restClient.html">Cliente rest con Ajax</a> </li>
+            <li> <a href="restClient_jq.html">Cliente rest con Ajax JQ</a> </li>
+            <li> <a href="listUsersPUT.html">Editar lista Ajax JQ</a> </li>
+            
         </ul>
         <form id="formLogin" action="users.do" method="get">
             Email: <input id="email" name="email"
@@ -27,6 +31,8 @@
                              value=""><br/>  
             <input name="method" type="submit" value="Login"/>
         </form>
+                          
+        <script src="js/jquery-3.4.1.js"></script>
         <script src="js/md5.min.js"></script>
         <script src="js/encrypt.js"></script>
     </body>
