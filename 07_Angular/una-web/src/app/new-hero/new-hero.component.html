@@ -1,0 +1,18 @@
+<div class="new-hero-container">
+    <h2>Add new Heroes!</h2>
+
+    <!-- input id -->
+    <label for="id">ID: </label>
+    <input [(ngModel)]="id" type="number" id="id" placeholder="Id" />
+    <br />
+    <!-- input name -->
+    <label for="name">NAME: </label>
+    <input [(ngModel)]="name" type="string" id="name" placeholder="Nombre" />
+    <br />
+    <!-- input file path -->
+    <label for="path">PATH: </label>
+    <input [(ngModel)]="file" type="string" id="path" placeholder="path" />
+    <br />
+    <!-- button to submit -->
+    <button (click)="heroSrv.addHero(id,name,file)">ADD!</button>
+</div>

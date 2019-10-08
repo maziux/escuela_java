@@ -1,7 +1,11 @@
 <h2>Listado de Heroes</h2>
+<!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
 <ul class="ul-heroes">
-    <li *ngFor = "let hero of heroes">
+    <li *ngFor = "let hero of heroes"
+        [class.hero-selected] = "hero === selectedHero"
+        (click)="onSelect(hero)">
         <span class="li-heroe">{{ hero.id }} </span> {{ hero.name }} <br/>
-        <span><img src='../../assets/img/{{hero.file}}'/></span>
+        <span><img class="img-heroe" src='../../assets/img/{{ hero.file }}'/></span>
+        <a routerLink="/detail/{{ hero.id }}">(+)</a>
     </li>
 </ul>
