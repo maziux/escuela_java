@@ -20,7 +20,7 @@ export class RegistrationComponent implements OnInit {
   
   enviar() {
     let nuevoUser = new User();
-    nuevoUser.id = '';//this.id;
+    nuevoUser.id = '0';//this.id;
     nuevoUser.email = this.email;
     nuevoUser.password = this.password;
     nuevoUser.name = this.name;
