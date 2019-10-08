@@ -1,3 +1,12 @@
 .hero-selected {
     background-color: beige;
 }
+.ul-heroes {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-position: inside;
+}
+.ul-heroes li {
+    border: 1px solid black;
+    padding: 5px;
+}

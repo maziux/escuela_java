@@ -1,6 +1,8 @@
 <div class="div-marco" *ngIf="hero">
     <!-- Solo se crea si hero tiene algún valor -->
     <h2>{{ hero.name | uppercase }} details</h2>
+    
+    <span><img class="img-heroe" src='../../assets/img/{{ hero.file }}'/></span>
     <div><span>Id: </span>{{ hero.id }}</div>
     <div>
         <label>Name: </label>
