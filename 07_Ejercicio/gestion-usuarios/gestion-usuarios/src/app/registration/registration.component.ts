@@ -14,7 +14,6 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private userSrv: UserRestService) { }
 
-  
   send() {
     alert(this.newUser.name);
   }
