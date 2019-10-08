@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { Component, OnInit, Input } from '@angular/core';
+=======
+import { Component, OnInit } from '@angular/core';
+>>>>>>> 0ba87760ca94a5b2e459f90bd08c2f18d537fb8f
 
 @Component({
   selector: 'app-form-user',
@@ -7,8 +11,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FormUserComponent implements OnInit {
 
+<<<<<<< HEAD
   @Input()
   user: User;
+=======
+>>>>>>> 0ba87760ca94a5b2e459f90bd08c2f18d537fb8f
   constructor() { }
 
   ngOnInit() {
