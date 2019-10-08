@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-form-user',
