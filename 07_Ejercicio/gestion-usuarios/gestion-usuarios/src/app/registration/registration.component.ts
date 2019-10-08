@@ -13,22 +13,17 @@ export class RegistrationComponent implements OnInit {
   email: string;
   password: string;
   name: string;
-  age: string
+  age: string;
 
   constructor(private userSrv: UserRestService) { }
 
   
-  enviar() {
-    let nuevoUser = new User();
-    nuevoUser.id = '0';//this.id;
-    nuevoUser.email = this.email;
-    nuevoUser.password = this.password;
-    nuevoUser.name = this.name;
-    nuevoUser.age = this.age;
-    this.userSrv.addUser(nuevoUser).subscribe( (obj) => this.ngOnInit() );
+  send() {
+    alert
   }
 
   ngOnInit() {
+    this.newUser = new User();
   }
 
 

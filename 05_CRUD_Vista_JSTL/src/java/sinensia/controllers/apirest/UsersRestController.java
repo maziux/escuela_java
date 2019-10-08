@@ -45,6 +45,7 @@ public class UsersRestController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json;charset=UTF-8");
+        setAccessControlHeaders(resp);
 
         try {
             List<User> usersList = userSrv.getAll();
@@ -82,6 +83,7 @@ public class UsersRestController extends HttpServlet {
                     userObject.getName(),
                     Integer.toString(userObject.getAge()));
             resp.setContentType("application/json;charset=UTF-8");
+            setAccessControlHeaders(resp);
 
             Gson gson = new Gson();
             String textJson = gson.toJson(userObject);
@@ -111,6 +113,20 @@ public class UsersRestController extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    
+    @Override
+    protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        setAccessControlHeaders(resp);
+        resp.setStatus(HttpServletResponse.SC_OK); // Devolvemos cod 200 = OK.
+    }
+    
+    private void setAccessControlHeaders(HttpServletResponse resp) {
+        resp.setHeader("Access-Control-Allow-Origin","http://localhost:4200");
+        resp.setHeader("Access-Control-Allow-Methods", "OPTIONS,HEAD,GET,PUT,DELETE,POST");
+        resp.setHeader("Access-Control-Allow-Headers", "X-PINGOTHER,Origin,X-Request-With, Content-Type, Accept");
+        resp.setHeader("Access-Control-Max-Age","1728000"); // 1728000 segundos = 20 días.
     }
 
 }
