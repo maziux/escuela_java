@@ -1,4 +1,4 @@
 <div class="registration">
-    <app-form-user></app-form-user>
-    <button (click)="userSrv.enviar()">ADD USER</button>
+    <app-form-user [user]="newUser"></app-form-user>
+    <button (click)="send()">ADD USER</button>
 </div>
