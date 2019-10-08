@@ -13,7 +13,6 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private userSrv: UserRestService) { }
 
-  
   send() {
     this.userSrv.addUser(this.newUser).subscribe( (obj) => this.ngOnInit() );
   }
