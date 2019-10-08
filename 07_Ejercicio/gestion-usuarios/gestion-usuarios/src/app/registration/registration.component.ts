@@ -9,23 +9,16 @@ import { User } from '../model/user';
 })
 export class RegistrationComponent implements OnInit {
 
-  id: string;
-  email: string;
-  password: string;
-  name: string;
-  age: string;
+  newUser: User;
 
   constructor(private userSrv: UserRestService) { }
 
   
   send() {
-    alert
+    this.userSrv.addUser(this.newUser).subscribe( (obj) => this.ngOnInit() );
   }
 
   ngOnInit() {
     this.newUser = new User();
   }
-
-
-
 }

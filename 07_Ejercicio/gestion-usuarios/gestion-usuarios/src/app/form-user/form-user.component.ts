@@ -11,8 +11,6 @@ export class FormUserComponent implements OnInit {
   @Input()
   user: User;
   constructor() {
-    if (this.user == null)
-      this.user = new User();
    }
 
   ngOnInit() {
