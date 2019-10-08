@@ -13,7 +13,7 @@ export class RegistrationComponent implements OnInit {
   email: string;
   password: string;
   name: string;
-  age: string
+  age: string;
 
   constructor(private userSrv: UserRestService) { }
 
