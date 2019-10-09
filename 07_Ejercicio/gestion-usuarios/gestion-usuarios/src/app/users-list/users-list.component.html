@@ -1,8 +1,8 @@
 <h2>Users list</h2>
-
-
 <ul class="ul-users">
-    <li *ngFor="let user of users" [class.user-selected]="user === selectedUser" (click)="onSelect(user)">
+    <li *ngFor="let user of usersRecibidos" [class.user-selected]="user === selectedUser" (click)="onSelect(user)">
         <!-- meter Id y email de usuario y botones-->
+        {{ user.id }} - {{ user.email }} 
     </li>
 </ul>
+

@@ -18,4 +18,14 @@ export class UserRestService {
   addUser(newUser: User): Observable<User> {    
     return this.httpCli.post<User>(this.urlApiRest,newUser,this.httpOptions);
   }
+
+  getUsers(): Observable<User[]>{
+    
+    let observResp: Observable<User[]>;
+    observResp = this.httpCli.get<User[]>(this.urlApiRest);
+    // Aqui no definimos las callback, mejor que las defina
+    // donde se necesian, Devolvemos el observable para que 
+    // se pueda gestionar desde fuera del servicio.
+    return observResp;
+  }
 }
