@@ -125,7 +125,7 @@ public class UsersRestController extends HttpServlet {
             userSrv.remove(userObject.getId());
             resp.setContentType("application/json;charset=UTF-8");
             setAccessControlHeaders(resp);
-            resp.getWriter().print("OK");
+            resp.getWriter().print("{\"mensaje\": \"OK\"}");
         } catch (SQLException ex) {
             Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
   

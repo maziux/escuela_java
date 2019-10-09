@@ -2,16 +2,24 @@
 
 <div *ngIf="activarUsuario">
     <app-form-user [user]='selectedUser' [modUser]="modUser"></app-form-user>
-    <span *ngIf="modUser"><input type="button" (click)="modify2()" value="ACEPTAR" /></span>
-    <span><input type="button" (click)="ocultar()" value="CANCELAR" /></span>
+    <div class="btn-group">
+        <input *ngIf="modUser" class="btn btn-success" type="button" (click)="modify2()" value="ACEPTAR" />
+        <input class="btn btn-danger" type="button" (click)="ocultar()" value="CANCELAR" />
+    </div>
 </div>
-<ul class="ul-users">
-    <li *ngFor="let user of usersRecibidos"
-        [class.user-selected]="user === selectedUser">
-    <span (click)="onSelect(user)">
-        {{ user.id }} --> {{ user.email }} - {{ user.name }}
-    </span>
-    <span><input type="button" (click)="modify(user)" value="MODIFICAR" /></span>
-    <span><input type="button" (click)="delete(user)" value="ELIMINAR" /></span>
-    </li>
-</ul>
+<div class="container">
+    <ul class="ul-users list-group">
+        <li *ngFor="let user of usersRecibidos" [class.user-selected]="user === selectedUser"
+            class="list-group-item row">
+            <span (click)="onSelect(user)">
+                <span class="badge col-lg-1">{{ user.id }}</span>
+                <span class="col-lg-3">{{ user.email }}</span>
+                <span class="col-lg-2">{{ user.name }}</span>
+            </span>
+            <span class="col-lg-4"><input class="btn btn-primary" type="button" (click)="modify(user)"
+                    value="MODIFICAR" /></span>
+            <span class="col-lg-2"><input class="btn btn-danger" type="button" (click)="delete(user)"
+                    value="ELIMINAR" /></span>
+        </li>
+    </ul>
+</div>

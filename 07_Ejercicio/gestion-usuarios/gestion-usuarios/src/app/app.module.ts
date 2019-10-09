@@ -12,6 +12,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { MessagesService } from './messages.service';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,8 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
