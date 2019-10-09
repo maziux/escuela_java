@@ -18,10 +18,10 @@ export class RegistrationComponent implements OnInit {
   send() {
     this.userSrv.addUser(this.newUser)
       .subscribe( (obj) => {
-          this.msgSrv.add("Exito registrando");
+          this.msgSrv.add('Registration success');
           this.ngOnInit();
          },
-         (error) =>  this.msgSrv.add("Error registrando: COMPRUEBE LOS DATOS"));
+         (error) =>  this.msgSrv.add('Registration failed'));
   }
 
   ngOnInit() {

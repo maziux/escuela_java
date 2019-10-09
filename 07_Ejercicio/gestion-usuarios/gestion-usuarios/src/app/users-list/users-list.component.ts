@@ -24,7 +24,7 @@ export class UsersListComponent implements OnInit {
   ngOnInit() {
     let observableArrayUsers: Observable<User[]>;
     observableArrayUsers = this.userSrv.getUsers();
-    // La ejecuciÃ³n continÃºa hasta que el array es recibido.
+    // La ejecución continúa hasta que el array es recibido.
     // Para recibirlo asincronamente nos suscribimos al Observable
     observableArrayUsers.subscribe( usersRec => this.usersRecibidos = usersRec );
   }
