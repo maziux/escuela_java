@@ -11,10 +11,17 @@
         <div class="jumbotron">
             <h1>{{ title }}</h1>
             <div>
-                <nav>
-                    <a routerLink="/">Inicio</a> -
-                    <a routerLink="/registration">Register</a> -
-                    <a routerLink="/list">Users list</a> -
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">Gestión Usuarios</a>
+                        </div>
+                        <ul class="nav navbar-nav">
+                            <li class="active"> <a routerLink="/">Inicio</a></li>
+                            <li><a routerLink="/registration">Register</a></li>
+                            <li><a routerLink="/list">Users list</a></li>
+                        </ul>
+                    </div>
                 </nav>
             </div>
         </div>

@@ -1,8 +1,9 @@
 <div *ngIf="messageSrv.messages.length">
     <h2>Log: </h2>
-    <button (click)="messageSrv.clear()">Clean</button>
+    <button class="btn btn-info btn-lg" (click)="messageSrv.clear()">
+            <span class="glyphicon glyphicon-remove"></span> Clean</button>
     <div *ngFor="let message of messageSrv.messages">
-        {{ message }}
+        <p>{{ message }}</p>
     </div>
 </div>
 
