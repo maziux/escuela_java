@@ -106,6 +106,7 @@ public class UsersRestController extends HttpServlet {
             userObject = userSrv.update(userObject);
             
             resp.setContentType("application/json;charset=UTF-8");
+            setAccessControlHeaders(resp);
 
             Gson gson = new Gson();
             String textJson = gson.toJson(userObject);
@@ -114,7 +115,23 @@ public class UsersRestController extends HttpServlet {
             Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            String jsonUser = req.getReader().readLine();
+            User userObject = new Gson().fromJson(jsonUser, User.class);
+            userSrv.remove(userObject.getId());
+            resp.setContentType("application/json;charset=UTF-8");
+            setAccessControlHeaders(resp);
+            resp.getWriter().print("OK");
+        } catch (SQLException ex) {
+            Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
+  
+            resp.getWriter().print("ERROR: " + ex.getMessage());
+        }
+    }    
     
     @Override
     protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

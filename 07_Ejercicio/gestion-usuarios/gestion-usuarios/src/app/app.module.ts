@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { UsersListComponent } from './users-list/users-list.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MessagesService } from './messages.service';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MessagesService } from './messages.service';
     FormUserComponent,
     RegistrationComponent,
     UsersListComponent,
-    MessagesComponent
+    MessagesComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
