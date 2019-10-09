@@ -7,10 +7,11 @@
 </div>
 <ul class="ul-users">
     <li *ngFor="let user of usersRecibidos"
-        [class.user-selected]="user === selectedUser"
-        (click)="onSelect(user)">
+        [class.user-selected]="user === selectedUser">
+    <span (click)="onSelect(user)">
         {{ user.id }} --> {{ user.email }} - {{ user.name }}
-    <span><input type="button" (click)="modify()" value="MODIFICAR" /></span>
-    <span><input type="button" (click)="delete(selectedUser)" value="ELIMINAR" /></span>
+    </span>
+    <span><input type="button" (click)="modify(user)" value="MODIFICAR" /></span>
+    <span><input type="button" (click)="delete(user)" value="ELIMINAR" /></span>
     </li>
 </ul>

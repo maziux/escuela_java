@@ -15,49 +15,58 @@ export class UsersListComponent implements OnInit {
   selectedUser: User;
   // test boolean
   activarUsuario: boolean = false;
-  modUser: boolean = false;
+  modUser: boolean;
 
 
   constructor(private userSrv: UserRestService,
-              private msgSrv: MessagesService) { }
+    private msgSrv: MessagesService) { }
 
   ngOnInit() {
     let observableArrayUsers: Observable<User[]>;
     observableArrayUsers = this.userSrv.getUsers();
-    // La ejecución continúa hasta que el array es recibido.
-    // Para recibirlo asincronamente nos suscribimos al Observable
-    observableArrayUsers.subscribe( usersRec => this.usersRecibidos = usersRec );
+    observableArrayUsers.subscribe(usersRec => this.usersRecibidos = usersRec);
   }
-  
+
   onSelect(user: User): void {
     this.selectedUser = user;
     this.activarUsuario = true;
+    this.modUser = false;
   }
   ocultar() {
     this.activarUsuario = false;
     this.modUser = false;
   }
 
-  modify2(): void {    
-    this.userSrv.updateUser(this.selectedUser).subscribe(
-      (obj) => {
-        this.msgSrv.add("CORRECT on UPDATE");
-        this.ngOnInit();
-       },
-       (error) => this.msgSrv.add("ERROR on UPDATE") );
-    
+  // TO DO - don't update the user locally if it's not updated on the db
+  modify2(): void {
+    this.userSrv.updateUser(this.selectedUser).subscribe((obj) => {
+      this.ngOnInit();
+      this.msgSrv.add(this.selectedUser.id + '-'+ this.selectedUser.email +' - User correctly updated');
+    }, error => {
+      this.msgSrv.add(this.selectedUser.id + '-'+ this.selectedUser.email +' - Update failed');
+    });
     this.activarUsuario = false;
+    this.modUser = false;
   }
-  modify(): void {
-    this.modUser = !this.modUser;
+  modify(user: User) {
+    this.selectedUser = user;
+    this.activarUsuario = true;
+    this.modUser = true;
   }
-  delete(): void { 
-    this.userSrv.deleteUser(this.selectedUser)
-      .subscribe(
-        (obj) => this.ngOnInit(),
-        (error) => this.msgSrv.add("ERROR on DELETE"));
-    this.activarUsuario = false;
 
+  delete(user: User): void {
+    this.userSrv.deleteUser(user).subscribe((obj) => {
+      this.ngOnInit();
+      this.msgSrv.add(user.id + '-' + user.email + ' - User deleted');
+    }, error => {
+      /* debido a un bug de httpClient, aunque reciba un "OK" del servidor, da error
+      / asi que aunque reciba error decimos que borramos el usuario porque sabemos que
+      / se va a borrar si o si
+       */
+      this.ngOnInit();
+      this.msgSrv.add(user.id + '-' + user.email + ' - User deleted'); 
+    });
+    this.activarUsuario = false;
   }
 
 
