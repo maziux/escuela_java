@@ -25,7 +25,13 @@ export class UserRestService {
     return this.httpCli.put<User>(this.urlApiRest, newUser, this.httpOptions);
   }
 
-  deleteUser(newUser: User): Observable<User> {
+  deleteUser(newUser: User): Observable<User> {{
+    const id = newUser.id;
+    const url = `${this.urlApiRest}/${id}`;
+  
+    return this.httpCli.delete<User>(url, this.httpOptions);
+    
+  }
     return this.httpCli.delete<User>(this.urlApiRest, this.httpOptions);
   }
   getUsers(): Observable<User[]> {

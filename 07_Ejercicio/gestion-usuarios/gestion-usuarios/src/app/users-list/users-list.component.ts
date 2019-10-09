@@ -41,7 +41,8 @@ export class UsersListComponent implements OnInit {
     this.activarModificar = false;
   }
   delete(): void { 
-    this.userSrv.deleteUser(this.selectedUser).subscribe( (obj) => this.ngOnInit() );
+    this.userSrv.deleteUser(this.selectedUser)
+      .subscribe( (obj) => this.ngOnInit(), (error) => this.msgSrv.add(error.messages) );
     this.msgSrv.add("User correctly DELETE");
     this.activarModificar = false;
 
