@@ -50,8 +50,12 @@ export class UsersListComponent implements OnInit {
       this.ngOnInit();
       this.msgSrv.add("User deleted");
     }, error => {
+      /* debido a un bug de httpClient, aunque reciba un "OK" del servidor, da error
+      / asi que aunque reciba error decimos que borramos el usuario porque sabemos que
+      / se va a borrar si o si
+       */
       this.ngOnInit();
-      this.msgSrv.add("User deleted");
+      this.msgSrv.add("User deleted"); 
     });
     this.activarModificar = false;
   }
