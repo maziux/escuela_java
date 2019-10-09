@@ -1,7 +1,17 @@
-<div>
-    <h2>User details</h2>
+<div *ngIf="!modUser">
+    <h2>User details NO MODIFICABLE</h2>
+    <div><span>Email: </span><input disabled [(ngModel)]="user.email" type="email" name="mail" id="mail" /></div>
+    <div><span>Password: </span><input disabled [(ngModel)]="user.password" type="password" name="password" id="password" />
+    </div>
+    <div><span>Name: </span><input disabled [(ngModel)]="user.name" type="text" name="name" id="name" /></div>
+    <div><span>Age: </span><input disabled [(ngModel)]="user.age" type="text" name="age" id="age" /></div>
+</div>
+
+<div *ngIf="modUser">
+    <h2>User details MODIFICABLE</h2>
     <div><span>Email: </span><input [(ngModel)]="user.email" type="email" name="mail" id="mail" /></div>
-    <div><span>Password: </span><input [(ngModel)]="user.password" type="password" name="password" id="password" /></div>
+    <div><span>Password: </span><input [(ngModel)]="user.password" type="password" name="password" id="password" />
+    </div>
     <div><span>Name: </span><input [(ngModel)]="user.name" type="text" name="name" id="name" /></div>
     <div><span>Age: </span><input [(ngModel)]="user.age" type="text" name="age" id="age" /></div>
 </div>

@@ -8,8 +8,8 @@ import { User } from '../model/user';
 })
 export class FormUserComponent implements OnInit {
 
-  @Input()
-  user: User;
+  @Input() user: User;
+  @Input() modUser: boolean;
   constructor() {
    }
 

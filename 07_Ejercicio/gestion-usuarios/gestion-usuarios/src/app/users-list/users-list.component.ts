@@ -14,7 +14,8 @@ export class UsersListComponent implements OnInit {
   usersRecibidos: User[];
   selectedUser: User;
   // test boolean
-  activarModificar: boolean = false;
+  activarUsuario: boolean = false;
+  modUser: boolean = false;
 
 
   constructor(private userSrv: UserRestService,
@@ -30,21 +31,32 @@ export class UsersListComponent implements OnInit {
   
   onSelect(user: User): void {
     this.selectedUser = user;
-    this.activarModificar = true;
+    this.activarUsuario = true;
   }
   ocultar() {
-    this.activarModificar = false;
+    this.activarUsuario = false;
+    this.modUser = false;
   }
-  modify(): void {    
-    this.userSrv.updateUser(this.selectedUser).subscribe( (obj) => this.ngOnInit() );
-    this.msgSrv.add("User correctly UPDATE");
-    this.activarModificar = false;
+
+  modify2(): void {    
+    this.userSrv.updateUser(this.selectedUser).subscribe(
+      (obj) => {
+        this.msgSrv.add("CORRECT on UPDATE");
+        this.ngOnInit();
+       },
+       (error) => this.msgSrv.add("ERROR on UPDATE") );
+    
+    this.activarUsuario = false;
+  }
+  modify(): void {
+    this.modUser = !this.modUser;
   }
   delete(): void { 
     this.userSrv.deleteUser(this.selectedUser)
-      .subscribe( (obj) => this.ngOnInit(), (error) => this.msgSrv.add(error.messages) );
-    this.msgSrv.add("User correctly DELETE");
-    this.activarModificar = false;
+      .subscribe(
+        (obj) => this.ngOnInit(),
+        (error) => this.msgSrv.add("ERROR on DELETE"));
+    this.activarUsuario = false;
 
   }
 

@@ -1,13 +1,16 @@
 <h2>Users list</h2>
 
-<div *ngIf="activarModificar">
-    <app-form-user [user]='selectedUser'></app-form-user>
-    <span><input type="button" (click)="modify()" value="MODIFICAR" /></span>
-    <span><input type="button" (click)="delete(selectedUser)" value="ELIMINAR" /></span>
-    <span><input type="button" (click)="ocultar()" value="X" /></span>
+<div *ngIf="activarUsuario">
+    <app-form-user [user]='selectedUser' [modUser]="modUser"></app-form-user>
+    <span *ngIf="modUser"><input type="button" (click)="modify2()" value="ACEPTAR" /></span>
+    <span><input type="button" (click)="ocultar()" value="CANCELAR" /></span>
 </div>
 <ul class="ul-users">
-    <li *ngFor="let user of usersRecibidos" [class.user-selected]="user === selectedUser" (click)="onSelect(user)">
+    <li *ngFor="let user of usersRecibidos"
+        [class.user-selected]="user === selectedUser"
+        (click)="onSelect(user)">
         {{ user.id }} --> {{ user.email }} - {{ user.name }}
+    <span><input type="button" (click)="modify()" value="MODIFICAR" /></span>
+    <span><input type="button" (click)="delete(selectedUser)" value="ELIMINAR" /></span>
     </li>
 </ul>
