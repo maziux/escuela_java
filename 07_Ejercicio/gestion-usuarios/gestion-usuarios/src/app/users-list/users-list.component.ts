@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
 import { UserRestService } from '../user-rest.service';
 import { Observable } from 'rxjs';
+import { MessagesService } from '../messages.service';
 
 @Component({
   selector: 'app-users-list',
@@ -16,7 +17,8 @@ export class UsersListComponent implements OnInit {
   activarModificar: boolean = false;
 
 
-  constructor(private userSrv: UserRestService) { }
+  constructor(private userSrv: UserRestService,
+              private msgSrv: MessagesService) { }
 
   ngOnInit() {
     let observableArrayUsers: Observable<User[]>;
@@ -35,6 +37,7 @@ export class UsersListComponent implements OnInit {
   }
   modify(): void {    
     this.userSrv.updateUser(this.selectedUser).subscribe( (obj) => this.ngOnInit() );
+    this.msgSrv.add("User correctly updated");
     this.activarModificar = false;
   }
 
