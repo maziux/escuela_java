@@ -18,6 +18,10 @@ export class UserRestService {
   addUser(newUser: User): Observable<User> {    
     return this.httpCli.post<User>(this.urlApiRest,newUser,this.httpOptions);
   }
+  
+  updateUser(newUser: User): Observable<User> {    
+    return this.httpCli.put<User>(this.urlApiRest,newUser,this.httpOptions);
+  }
 
   getUsers(): Observable<User[]>{
     

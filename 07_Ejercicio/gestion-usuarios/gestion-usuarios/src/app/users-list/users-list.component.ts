@@ -12,6 +12,10 @@ export class UsersListComponent implements OnInit {
 
   usersRecibidos: User[];
   selectedUser: User;
+  // test boolean
+  activarModificar: boolean = false;
+
+
   constructor(private userSrv: UserRestService) { }
 
   ngOnInit() {
@@ -24,7 +28,15 @@ export class UsersListComponent implements OnInit {
   
   onSelect(user: User): void {
     this.selectedUser = user;
-    alert(user.email);
+    this.activarModificar = true;
   }
+  ocultar() {
+    this.activarModificar = false;
+  }
+  modify(): void {    
+    this.userSrv.updateUser(this.selectedUser).subscribe( (obj) => this.ngOnInit() );
+    this.activarModificar = false;
+  }
+
 
 }
