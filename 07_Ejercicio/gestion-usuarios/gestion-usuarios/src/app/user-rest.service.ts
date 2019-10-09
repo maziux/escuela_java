@@ -11,16 +11,20 @@ export class UserRestService {
 
   urlApiRest = 'http://localhost:8084/CRUD_Vista_JSTL/api/users';
   httpOptions = {
-    headers: new HttpHeaders({"Content-Type": "application/json"})
+    headers: new HttpHeaders({ "Content-Type": "application/json" })
   }
   constructor(private httpCli: HttpClient) { }
 
-  addUser(newUser: User): Observable<User> {    
-    return this.httpCli.post<User>(this.urlApiRest,newUser,this.httpOptions);
+  addUser(newUser: User): Observable<User> {
+    return this.httpCli.post<User>(this.urlApiRest, newUser, this.httpOptions);
   }
 
-  getUsers(): Observable<User[]>{
-    
+  updateUser(newUser: User): Observable<User> {
+    return this.httpCli.put<User>(this.urlApiRest, newUser, this.httpOptions);
+  }
+
+  getUsers(): Observable<User[]> {
+
     let observResp: Observable<User[]>;
     observResp = this.httpCli.get<User[]>(this.urlApiRest);
     // Aqui no definimos las callback, mejor que las defina
