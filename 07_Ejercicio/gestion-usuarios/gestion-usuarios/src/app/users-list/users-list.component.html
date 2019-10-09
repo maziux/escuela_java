@@ -3,7 +3,7 @@
 <div *ngIf="activarModificar">
     <app-form-user [user]='selectedUser'></app-form-user>
     <span><input type="button" (click)="modify()" value="MODIFICAR" /></span>
-    <span><input type="button" (click)="delete()" value="ELIMINAR" /></span>
+    <span><input type="button" (click)="delete(selectedUser)" value="ELIMINAR" /></span>
     <span><input type="button" (click)="ocultar()" value="X" /></span>
 </div>
 <ul class="ul-users">
