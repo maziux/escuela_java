@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/alumno/Desktop/ESCUELA_JAVA/escuela_java.git/03_WebServlets/web/param.jsp</file>
+            <file>file:/C:/Users/alumno/Desktop/ESCUELA_JAVA/escuela_java.git/03_WebServlets/web/index.jsp</file>
+            <file>file:/C:/Users/alumno/Desktop/ESCUELA_JAVA/escuela_java.git/03_WebServlets/web/head.jsp</file>
+            <file>file:/C:/Users/alumno/Desktop/ESCUELA_JAVA/escuela_java.git/03_WebServlets/web/header.jsp</file>
+            <file>file:/C:/Users/alumno/Desktop/ESCUELA_JAVA/escuela_java.git/03_WebServlets/web/registro.jsp</file>
+            <file>file:/C:/Users/alumno/Desktop/ESCUELA_JAVA/escuela_java.git/03_WebServlets/src/java/com/sinensia/servlets/ParamServlet.java</file>
+        </group>
     </open-files>
 </project-private>

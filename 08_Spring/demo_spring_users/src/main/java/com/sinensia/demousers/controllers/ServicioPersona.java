@@ -3,16 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sinensia.demousers;
+package com.sinensia.demousers.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sinensia.demousers.Persona;
+import com.sinensia.demousers.model.Persona;
 
 /**
  * Singleton porque sólo queremos un servicio por aplicación/servidor
@@ -25,7 +27,11 @@ public class ServicioPersona {
 
     private ArrayList<Persona> personas;
 
-    public Persona addPersonas(String nombre, String edad)
+    @RequestMapping(method = RequestMethod.POST)
+    public Persona addPersonas(
+    		@RequestParam(value = "nombre") String nombre,
+    		@RequestParam(value = "edad",
+    					  defaultValue = "1") String edad)
             throws NumberFormatException, IOException, IllegalArgumentException {
 
         if (nombre.equals("")) {
@@ -45,51 +51,32 @@ public class ServicioPersona {
             }
         }
     }
-
+    
     @RequestMapping(method = RequestMethod.GET)
-    public ArrayList<Persona> getPersona(String nombre) {
-    	if (personas == null) {
+    public ArrayList<Persona> getPersonas() {
+    	if (personas  == null) {
     		personas = new ArrayList<Persona>();
-    		personas.add(new Persona("Nombre1", 20));
-    		personas.add(new Persona("Nombre2", 20));
-    		personas.add(new Persona("Nombre3", 20));
+    		personas.add(new Persona("Fulanito", 20));
+    		personas.add(new Persona("Fulanita", 30));
+    		personas.add(new Persona("Mengano", 40));
     	}
-    	return personas;
+    	return this.personas;
     }
     
-    public ArrayList<Persona> buscarPersonasPorNombres(String listaNombres) {
-        ArrayList<Persona> personasEncontradas = new ArrayList<>();
-        if (listaNombres == null) {
-            return personasEncontradas;
-        }
-        String[] nombres = listaNombres.split(",");
-        for (String nombre : nombres) {
-            for(Persona p: personas) {
-                if(p.getNombre().equalsIgnoreCase(nombre.trim())){
-                    personasEncontradas.add(p);
-                }
+    /* @GetMapping( params = "nombre" ) */
+    @GetMapping("/pornombre")
+    public Persona getPersona(String nombre) {
+        for (Persona p : personas) {
+            if (p.getNombre().equalsIgnoreCase(nombre)) {
+                return p;
             }
         }
-        return personasEncontradas;
+        return null;
     }
 
-    /*
-    public ArrayList<Persona> buscarPersonasPorMails(String listaMails) {
-        ArrayList<Persona> personasEncontradas = new ArrayList<>();
-        if (listaMails == null) {
-            return personasEncontradas;
-        }
-        String[] mails = listaMails.split(",");
-        for(String mail : mails){
-            personas.stream().filter((p) ->(p.getMail().equals(mail.trim()))).forEachOrdered((p) ->{
-                personasEncontradas.add(p);
-            });
-        }
-        return personasEncontradas;
-    }
-    */
-
-    public boolean removePersona(String nombre) {
+    @RequestMapping(method = RequestMethod.DELETE)
+    public boolean removePersona(
+    		@RequestParam(value="nombre") String nombre) {
         Persona perElim = null;
         for (Persona p : personas) {
             if (p.getNombre().equalsIgnoreCase(nombre)) {
@@ -102,5 +89,18 @@ public class ServicioPersona {
             personas.remove(perElim);
             return true;
         }
+    }
+    
+    @RequestMapping(method = RequestMethod.PUT)
+    public Persona updatePersona(
+    		@RequestParam(value = "nombre") String nombre,
+    		@RequestParam(value = "edad") String edad) {
+    	Persona pUpdate = getPersona(nombre);
+    	if(pUpdate != null) {
+    		pUpdate.setEdad(Integer.parseInt(edad));
+    		return pUpdate;
+    	} else {
+    		return null;
+    	}
     }
 }
